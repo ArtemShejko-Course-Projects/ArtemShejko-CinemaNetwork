@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema_CP_WPF", "Cinema_CP_WPF\Cinema_CP_WPF.csproj", "{422D2B0B-A5D0-4A28-8EEB-10D070317814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaDAL", "CinemaDAL\CinemaDAL.csproj", "{5F243AFE-6BE0-4C9F-B712-ABC50719078B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{422D2B0B-A5D0-4A28-8EEB-10D070317814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{422D2B0B-A5D0-4A28-8EEB-10D070317814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{422D2B0B-A5D0-4A28-8EEB-10D070317814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{422D2B0B-A5D0-4A28-8EEB-10D070317814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F243AFE-6BE0-4C9F-B712-ABC50719078B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F243AFE-6BE0-4C9F-B712-ABC50719078B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F243AFE-6BE0-4C9F-B712-ABC50719078B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F243AFE-6BE0-4C9F-B712-ABC50719078B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CA338C6-2AE5-40C1-B31A-4B30740D04F0}
+	EndGlobalSection
+EndGlobal

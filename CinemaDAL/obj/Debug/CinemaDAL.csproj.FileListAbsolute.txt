@@ -1,0 +1,12 @@
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\bin\Debug\CinemaDAL.dll.config
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\bin\Debug\CinemaDAL.dll
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\bin\Debug\CinemaDAL.pdb
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\bin\Debug\EntityFramework.dll
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\bin\Debug\EntityFramework.xml
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.csproj.CopyComplete
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.dll
+C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.pdb
