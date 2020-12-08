@@ -22,6 +22,7 @@
 
 
         </Grid>
+        <ListBox HorizontalAlignment="Left" Height="186" Margin="0,1,0,0" VerticalAlignment="Top" Width="255"/>
     </Grid>
-   
+
 </Window>
