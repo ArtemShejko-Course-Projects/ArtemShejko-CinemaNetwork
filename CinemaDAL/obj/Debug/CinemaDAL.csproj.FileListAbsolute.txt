@@ -10,3 +10,15 @@ C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.csproj.C
 C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.csproj.CopyComplete
 C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.dll
 C:\Users\admin\source\repos\Cinema_CP_WPF\CinemaDAL\obj\Debug\CinemaDAL.pdb
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\CinemaDAL.dll.config
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\CinemaDAL.dll
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\CinemaDAL.pdb
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\EntityFramework.dll
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\EntityFramework.SqlServer.dll
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\EntityFramework.xml
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\EntityFramework.SqlServer.xml
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.csprojAssemblyReference.cache
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.csproj.CoreCompileInputs.cache
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.csproj.CopyComplete
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.dll
+c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.pdb
