@@ -1,0 +1,51 @@
+﻿<Window x:Class="Cinema_CP_WPF.Views.AdminViews.AddFilmView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews"
+        xmlns:vm="clr-namespace:Cinema_CP_WPF.ViewsModels.AdminsViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:AddFilmViewModel}"
+        Title="AddFilmView" Height="450" Width="800">
+        
+     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="Film List" Margin="1,1,1,1">
+            <DataGrid ItemsSource="{Binding SearchReSult}"></DataGrid>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Grid.Column="2" Header="Film Description" Margin="1,1,1,1">
+            <TextBox></TextBox>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0" Margin="1,1,1,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <GroupBox Header="Search by" Grid.RowSpan="2">
+                <StackPanel>
+                    <CheckBox Content="By Name" Margin="5,5,5,5"/>
+                    <CheckBox Content="By Genre" Margin="5,5,5,5"/>
+                    <CheckBox Content="By Actor" Margin="5,5,5,5"/>
+                    <CheckBox Content="By Year"  Margin="5,5,5,5"/>
+                </StackPanel>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="2" Header="Actors" Margin="1,1,1,1">
+            <TextBox></TextBox>
+        </GroupBox>
+    </Grid>
+</Window>

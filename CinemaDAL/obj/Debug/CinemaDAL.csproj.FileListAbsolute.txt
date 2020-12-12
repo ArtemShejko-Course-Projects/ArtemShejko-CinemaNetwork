@@ -17,8 +17,8 @@ c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\
 c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\EntityFramework.SqlServer.dll
 c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\EntityFramework.xml
 c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\bin\Debug\EntityFramework.SqlServer.xml
-c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.csprojAssemblyReference.cache
 c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.csproj.CoreCompileInputs.cache
 c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.csproj.CopyComplete
 c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.dll
 c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.pdb
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\CinemaDAL\obj\Debug\CinemaDAL.csprojAssemblyReference.cache

@@ -10,19 +10,72 @@
         Title="СashierView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition />
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" HorizontalAlignment="Stretch"  Margin="1.1,1,1,1" VerticalAlignment="Stretch">
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.40*"/>
+                <RowDefinition Height="1.75*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="0.05*"/>
             </Grid.RowDefinitions>
-            <Button Content="Screen" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" Background="DarkOliveGreen"/>
-
-
+            <GroupBox Grid.Row="0" Background="Azure">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                     </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0" Background="Azure" Header="Hall" Margin="2,2,2,2">
+                        <ComboBox Margin="1,1,1,1" Binding.SourceUpdated="ComboBox_SourceUpdated"></ComboBox>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Background="Azure" Header="Date">
+                        <DatePicker></DatePicker>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Header="Sesions" Background="Azure" Margin="2,2,2,2">
+                <DataGrid  x:Name="dgSesions" VerticalAlignment="Top" DataContext="{Binding Source=list}"  AutoGenerateColumns="False" CanUserResizeColumns="True" Margin="3,3,3,3"/>
+            </GroupBox>
+            <Grid Grid.Row="2" >
+                <GroupBox Grid.Row="0" Grid.Column="0" Header="Sell Ticket" Background="Azure" Margin="2,2,2,2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="82*"/>
+                            <ColumnDefinition Width="96*"/>
+                            <ColumnDefinition Width="96*"/>
+                            <ColumnDefinition Width="96*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Row" Margin="3,3,2.667,3" Grid.ColumnSpan="2"/>
+                        <Label Grid.Row="0" Grid.Column="3" Content="Place" Margin="3.333,3,2.667,3"/>
+                        <TextBox Grid.Row="0" Grid.Column="2" Margin="3.333,3,2.667,3"/>
+                        <TextBox Grid.Row="0" Grid.Column="4" Margin="3.333,3,2.667,3"/>
+                        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Content="Sell Ticket" Margin="3,3,2.667,3.333"/>
+                        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="Name for Reserve" Margin="3,2.667,2.667,2.667"/>
+                        <TextBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="3.333,2.667,2.667,2.667"/>
+                        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Content="Reserve Ticket" Margin="3,3.333,2.667,3"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
         </Grid>
-        <ListBox HorizontalAlignment="Left" Height="186" Margin="0,1,0,0" VerticalAlignment="Top" Width="255"/>
-    </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.05*"/>                
+                </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Grid.ColumnSpan="2" Header="Hall Plan" Background="Azure" Margin="2,2,2,2">
+                <StackPanel Margin="1,1,1,1" Orientation="Horizontal" >
+                    
+                </StackPanel>
+            </GroupBox>
+            <Label Grid.Row="1" Content="SCREEN" Padding="1,1,1,1" HorizontalContentAlignment="Center" Background="PowderBlue"/>
+        </Grid>
+     </Grid>
 
 </Window>

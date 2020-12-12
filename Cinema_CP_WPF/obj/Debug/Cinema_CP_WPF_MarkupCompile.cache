@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\
 Cinema_CP_WPF
 none
 false
 DEBUG;TRACE
-c:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\App.xaml
-41530095106
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\App.xaml
+121670694764
 
-1059993124
-181996330883
-Views\AdminView.xaml;Views\MainView.xaml;Views\UserView.xaml;Views\СashierView.xaml;
+28-1972140467
+18-494307487
+Views\AdminViews\AddFilmView.xaml;Views\AdminViews\AddHallView.xaml;Views\AdminViews\AddSesionView.xaml;Views\AdminViews\AdminView.xaml;Views\AdminViews\EditFilmView.xaml;Views\AdminViews\EditHallView.xaml;Views\AdminViews\EditPersonalView.xaml;Views\AdminViews\EditSesionView.xaml;Views\AdminViews\EditUsersView.xaml;Views\MainView.xaml;Views\UserView.xaml;Views\СashierView.xaml;
 
 False
 

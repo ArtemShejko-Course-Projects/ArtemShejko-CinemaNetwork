@@ -1,0 +1,32 @@
+﻿<Window x:Class="Cinema_CP_WPF.Views.AdminView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews"
+        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:Cinema_CP_WPF.ViewsModels.AdminsViewModels"
+
+        d:DataContext="{d:DesignInstance Type=vm:AdminViewModel}"
+        Title="AdminView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Name="Films" Content ="Films" Command ="{Binding OpAdminFilms}"/>
+        <!--<Button Grid.Column="0" Grid.Row="1" Content="Sesions" Margin="5,5,5,5" Command="{Binding OpAdminSesions}"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="Tickets" Margin="5,5,5,5" Command="{Binding OpAdminTickets}"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="Halls" Margin="5,5,5,5" Command="{Binding OpAdminHalls}"/>
+        <Button Grid.Column="1" Grid.Row="0" Content="Users" Margin="5,5,5,5" Command="{Binding OpAdminUsers}"/>
+        <Button Grid.Column="1" Grid.Row="1" Content="Personal" Margin="5,5,5,5" Command="{Binding OpAdminPersonal}"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="Reserved Tickets" Margin="5,5,5,5" Command="{Binding OpAdminReservedTickets}"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="Exit" Margin="5,5,5,5" Command="{Binding OpAdminExit}"/>-->
+    </Grid>
+</Window>

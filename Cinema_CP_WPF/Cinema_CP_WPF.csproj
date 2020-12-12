@@ -72,10 +72,44 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewsModels\AdminsViewModels\AddFilmViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\AddHallViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\AddSesionViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\EditFilmViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\EditHalViewModell.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\EditPersonalViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\EditSeisonViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\EditUsersViewModel.cs" />
     <Compile Include="ViewsModels\MainViewModel.cs" />
+    <Compile Include="ViewsModels\UserViewModel.cs" />
     <Compile Include="ViewsModels\СashierViewModel.cs" />
-    <Compile Include="Views\AdminView.xaml.cs">
+    <Compile Include="Views\AdminViews\AddFilmView.xaml.cs">
+      <DependentUpon>AddFilmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AddHallView.xaml.cs">
+      <DependentUpon>AddHallView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AddSesionView.xaml.cs">
+      <DependentUpon>AddSesionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\EditFilmView.xaml.cs">
+      <DependentUpon>EditFilmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\EditHallView.xaml.cs">
+      <DependentUpon>EditHallView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\EditPersonalView.xaml.cs">
+      <DependentUpon>EditPersonalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\EditSesionView.xaml.cs">
+      <DependentUpon>EditSesionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\EditUsersView.xaml.cs">
+      <DependentUpon>EditUsersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -118,7 +152,39 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\AdminView.xaml">
+    <Page Include="Views\AdminViews\AddFilmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AddHallView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AddSesionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\EditFilmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\EditHallView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\EditPersonalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\EditSesionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\EditUsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

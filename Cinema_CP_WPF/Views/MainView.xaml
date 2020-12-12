@@ -11,7 +11,12 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Name="CahierView" Content ="CahierView" Command ="{Binding OpenCahierView}" />
+        <Button Grid.Column="0" Name="CahierView" Content ="CahierView" Command ="{Binding OpenCahierView}"/>
+        <Button Grid.Column="1" Name="UserView" Content ="UserView" Command ="{Binding OpenUserView}"/>
+        <Button Grid.Column="2" Name="AdminView" Content ="AdminView" Command ="{Binding OpenAdminView}"/>
+        <Button Grid.Column="3" Name="EditFilmView" Content ="EditFilmView" Command ="{Binding OpAdminFilms}"/>
     </Grid>
 </Window>
