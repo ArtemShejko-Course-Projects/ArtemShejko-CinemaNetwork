@@ -20,6 +20,10 @@ namespace CinemaDAL
 
         public int HallId { get; set; }
 
+        public int Places { get; set; }
+
+        public int FreePlaces { get; set; }
+
         public DateTime SessionDate { get; set; }
 
         public virtual Films Films { get; set; }

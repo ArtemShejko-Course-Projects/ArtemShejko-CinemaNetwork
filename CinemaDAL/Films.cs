@@ -31,6 +31,12 @@ namespace CinemaDAL
         [Required]
         public string FilmDescription { get; set; }
 
+        public int FilmDuration { get; set; }
+
+        public DateTime FilmStartDate { get; set; }
+
+        public DateTime FilmEndDate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmSessions> FilmSessions { get; set; }
     }

@@ -53,12 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CinemaContext.cs" />
     <Compile Include="CinemaStaff.cs" />
     <Compile Include="CinemaUser.cs" />
     <Compile Include="Films.cs" />
     <Compile Include="FilmSessions.cs" />
     <Compile Include="Halls.cs" />
-    <Compile Include="CinemaContext.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
