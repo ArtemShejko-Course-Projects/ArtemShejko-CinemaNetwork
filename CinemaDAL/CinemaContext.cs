@@ -16,6 +16,7 @@ namespace CinemaDAL
         public virtual DbSet<CinemaUser> CinemaUser { get; set; }
         public virtual DbSet<Films> Films { get; set; }
         public virtual DbSet<FilmSessions> FilmSessions { get; set; }
+        public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<Halls> Halls { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
@@ -27,11 +28,11 @@ namespace CinemaDAL
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Films>()
-                .Property(e => e.FilmGenre)
+                .Property(e => e.FilmActors)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Films>()
-                .Property(e => e.FilmActors)
+                .Property(e => e.FilmImageUri)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Films>()
@@ -40,8 +41,18 @@ namespace CinemaDAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<FilmSessions>()
+                .Property(e => e.SessionPrice)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<FilmSessions>()
                 .HasMany(e => e.Ticket)
                 .WithRequired(e => e.FilmSessions)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Genre>()
+                .HasMany(e => e.Films)
+                .WithRequired(e => e.Genre)
+                .HasForeignKey(e => e.FilmGenre)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Halls>()
@@ -53,6 +64,10 @@ namespace CinemaDAL
                 .HasMany(e => e.Place)
                 .WithRequired(e => e.Halls)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Place>()
+                .Property(e => e.PlacePriceMultiplier)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Place>()
                 .HasMany(e => e.Ticket)

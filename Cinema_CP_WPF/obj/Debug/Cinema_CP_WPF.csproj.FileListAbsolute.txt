@@ -63,7 +63,6 @@ C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\De
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\AddFilmView.g.cs
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\AddHallView.g.cs
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\AddSesionView.g.cs
-C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditFilmView.g.cs
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditHallView.g.cs
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditPersonalView.g.cs
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditSesionView.g.cs
@@ -71,8 +70,9 @@ C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\De
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\AddFilmView.baml
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\AddHallView.baml
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\AddSesionView.baml
-C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditFilmView.baml
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditHallView.baml
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditPersonalView.baml
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditSesionView.baml
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\EditUsersView.baml
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\TicketsView.g.cs
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\TicketsView.baml

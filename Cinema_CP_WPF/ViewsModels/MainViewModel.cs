@@ -1,5 +1,6 @@
 ﻿using Cinema_CP_WPF.Views;
 using Cinema_CP_WPF.Views.AdminViews;
+using Cinema_CP_WPF.ViewsModels.AdminsViewModels;
 using MVVMHelper.Commands;
 using MVVMHelper.ViewModels;
 using System;
@@ -24,7 +25,7 @@ namespace Cinema_CP_WPF.ViewsModels
             get
             {
                 return openCahierView ?? (openCahierView = new RelayCommand(
-                    x => { СashierView cv = new СashierView(); cv.Show(); }
+                    x => { СashierView cv = new СashierView() {DataContext=new СashierViewModel()}; cv.Show(); }
                     ));
             }
         }
@@ -43,7 +44,7 @@ namespace Cinema_CP_WPF.ViewsModels
         {
             get
             {
-                return openAdminView ?? (openAdminView = new RelayCommand(x => { AdminView av = new AdminView(); av.Show(); }));
+                return openAdminView ?? (openAdminView = new RelayCommand(x => { AdminView av = new AdminView() { DataContext = new AdminViewModel()}; av.Show(); }));
             }
         }
 

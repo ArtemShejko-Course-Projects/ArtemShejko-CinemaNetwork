@@ -35,13 +35,14 @@
                         </ComboBox>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Background="Azure" Header="Date">
-                        <DatePicker></DatePicker>
+                        <DatePicker SelectedDate="{Binding SelectedDate}"></DatePicker>
                     </GroupBox>
                 </Grid>
             </GroupBox>
             <GroupBox Grid.Row="1" Header="Sesions" Background="Azure" Margin="2,2,2,2">
                        <!--<DataGrid  x:Name="dgSesions" VerticalAlignment="Top" ItemsSource="{Binding SelectedHall.FilmSessions}"  Margin="3,3,3,3"/>-->
-                    <ListBox x:Name="lstSesions" VerticalAlignment="Top" ItemsSource="{Binding SelectedHall.FilmSessions}"  Margin="3,3,3,3">
+
+                <ListBox x:Name="lstSesions" VerticalAlignment="Top" ItemsSource="{Binding Sortedsesionlist}"  SelectedItem="{Binding SelectedSesion}" Margin="3,3,3,3">
                         <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -51,13 +52,16 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Margin="5,1,5,1" Text="{Binding Films.FilmName}" />
-                                <TextBlock Grid.Column="1" Margin="5,1,5,1" Text="{Binding Halls.PlaceQuantity}"/>
-                                <TextBlock Grid.Column="2" Margin="5,1,5,1" Text="{Binding Halls.HallName}"/>
-                                <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="{Binding Films.FilmGenre}"/>
-                                <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="{Binding Films.FilmDuration}"/>
-                                <TextBlock Grid.Column="4" Margin="5,1,5,1" Text="{Binding SessionDate}"/>
+                                <TextBlock Grid.Column="0" Margin="5,1,5,1" Text="{Binding Films.FilmName}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="1" Margin="5,1,5,1" Text="{Binding Halls.HallName}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="2" Margin="5,1,5,1" Text="{Binding Films.FilmGenre}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="{Binding Places}"/>
+                                <TextBlock Grid.Column="4" Margin="5,1,5,1" Text="Free Places -"/>
+                                <TextBlock Grid.Column="5" Margin="5,1,5,1" Text="{Binding FreePlaces}"/>
+                                <TextBlock Grid.Column="6" Margin="5,1,5,1" Text="{Binding SessionDate}"/>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>                        
@@ -81,27 +85,27 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Content="Row" Padding="1,1,1,1" Margin="3,3,2.667,3" Grid.ColumnSpan="2"/>
                         <Label Grid.Row="0" Grid.Column="3" Content="Place" Padding="1,1,1,1" Margin="3.333,3,2.667,3"/>
-                        <TextBox Grid.Row="0" Grid.Column="2" Margin="3.333,3,2.667,3"/>
-                        <TextBox Grid.Row="0" Grid.Column="4" Margin="3.333,3,2.667,3"/>
-                        <Button x:Name="btnSellT" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Content="Sell Ticket" Command ="{Binding SellTicket}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                        <TextBox Name ="tbTicketRow" Text="{Binding Row}" Grid.Row="0" Grid.Column="2" Margin="3.333,3,2.667,3"/>
+                        <TextBox Name="tbTicketPlace" Text="{Binding Place}" Grid.Row="0" Grid.Column="4" Margin="3.333,3,2.667,3"/>
+                        <Button x:Name="btnSellT" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Content="Sell Ticket" Command ="{Binding SellTicket}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                        <Button x:Name="btnReturnT" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Content="Return Ticket" Command ="{Binding ReturnTicket}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
                         <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="Name for Reserve" Padding="1,1,1,1" Margin="3,2.667,2.667,2.667"/>
-                        <TextBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="3.333,2.667,2.667,2.667"/>
-                        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Content="Reserve Ticket" Margin="3,3.333,2.667,3"/>
+                        <TextBox Name="tbReserveFIO" Text="{Binding tbReserveName}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="3.333,2.667,2.667,2.667"/>
+                        <Button Name="ReserveFIO" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Content="Reserve Ticket" Command ="{Binding ReserveName}" Margin="3,3.333,2.667,3"/>
+                        <Button Name="SellReserveFIO" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Content="Sell Reserve Ticket" Command ="{Binding SellreserveName}" Margin="3,3.333,2.667,3"/>
                     </Grid>
                 </GroupBox>
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="0.05*"/>                
+                <RowDefinition Height="0.07*"/>
+                <RowDefinition/>                
                 </Grid.RowDefinitions>
-            <GroupBox Grid.Row="0" Grid.ColumnSpan="2" Header="Hall Plan" Background="Azure" Margin="2,2,2,2">
-                <Grid x:Name="PlaceGrid" Margin="1,1,1,1"  >
-                    
-                </Grid>
+            <GroupBox Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding PlaceGridView}" Background="Azure" Margin="2,2,2,2">
+                 <!--<Grid x:Name="PlaceGrid" Margin="1,1,1,1" Binding="PlaceGridView"/>-->
             </GroupBox>
-            <Label Grid.Row="1" Content="SCREEN" Padding="1,1,1,1" HorizontalContentAlignment="Center" Background="PowderBlue"/>
+            <Label Grid.Row="0" Margin="2,2,2,2" Padding="1,1,1,1" Content="SCREEN" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Background="PowderBlue"/>
         </Grid>
      </Grid>
 

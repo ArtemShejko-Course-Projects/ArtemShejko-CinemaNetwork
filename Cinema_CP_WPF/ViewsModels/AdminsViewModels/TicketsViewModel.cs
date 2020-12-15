@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
 {
-    public class EditFilmViewModel
+    public class TicketsViewModel
     {
     }
 }

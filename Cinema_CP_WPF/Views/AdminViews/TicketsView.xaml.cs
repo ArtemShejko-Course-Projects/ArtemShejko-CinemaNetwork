@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Cinema_CP_WPF.Views.AdminViews
 {
     /// <summary>
-    /// Interaction logic for EditFilmView.xaml
+    /// Interaction logic for TicketsView.xaml
     /// </summary>
-    public partial class EditFilmView : Window
+    public partial class TicketsView : Window
     {
-        public EditFilmView()
+        public TicketsView()
         {
             InitializeComponent();
         }

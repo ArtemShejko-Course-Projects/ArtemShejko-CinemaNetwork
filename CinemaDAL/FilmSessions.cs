@@ -26,6 +26,8 @@ namespace CinemaDAL
 
         public DateTime SessionDate { get; set; }
 
+        public decimal SessionPrice { get; set; }
+
         public virtual Films Films { get; set; }
 
         public virtual Halls Halls { get; set; }

@@ -58,6 +58,7 @@
     <Compile Include="CinemaUser.cs" />
     <Compile Include="Films.cs" />
     <Compile Include="FilmSessions.cs" />
+    <Compile Include="Genre.cs" />
     <Compile Include="Halls.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

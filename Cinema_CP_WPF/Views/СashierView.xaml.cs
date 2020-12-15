@@ -24,9 +24,5 @@ namespace Cinema_CP_WPF.Views
             InitializeComponent();
         }
 
-        private void ComboBox_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-
-        }
     }
 }

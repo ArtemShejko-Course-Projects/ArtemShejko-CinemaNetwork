@@ -20,13 +20,43 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Name="Films" Content ="Films" Command ="{Binding OpAdminFilms}"/>
-        <!--<Button Grid.Column="0" Grid.Row="1" Content="Sesions" Margin="5,5,5,5" Command="{Binding OpAdminSesions}"/>
-        <Button Grid.Column="0" Grid.Row="2" Content="Tickets" Margin="5,5,5,5" Command="{Binding OpAdminTickets}"/>
-        <Button Grid.Column="0" Grid.Row="3" Content="Halls" Margin="5,5,5,5" Command="{Binding OpAdminHalls}"/>
-        <Button Grid.Column="1" Grid.Row="0" Content="Users" Margin="5,5,5,5" Command="{Binding OpAdminUsers}"/>
-        <Button Grid.Column="1" Grid.Row="1" Content="Personal" Margin="5,5,5,5" Command="{Binding OpAdminPersonal}"/>
-        <Button Grid.Column="1" Grid.Row="2" Content="Reserved Tickets" Margin="5,5,5,5" Command="{Binding OpAdminReservedTickets}"/>
-        <Button Grid.Column="1" Grid.Row="3" Content="Exit" Margin="5,5,5,5" Command="{Binding OpAdminExit}"/>-->
+        <Button Grid.Column="0" Grid.Row="0" Name="Films" Margin="5,5,5,5" Background="Azure" Command ="{Binding OpAdminFilms}">
+            <Viewbox><TextBlock Text="FILMS"/></Viewbox>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminSesions}">
+            <Viewbox>
+                <TextBlock Text="SESIONS"/>
+            </Viewbox>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="2" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminTickets}">
+            <Viewbox>
+                <TextBlock Text="TICKETS"/>
+            </Viewbox>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="3" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminHalls}">
+            <Viewbox>
+                <TextBlock Text="HALLS"/>
+            </Viewbox>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminUsers}">
+            <Viewbox>
+                <TextBlock Text="USERS"/>
+            </Viewbox>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="1" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminPersonal}">
+            <Viewbox>
+                <TextBlock Text="PERSONAL"/>
+            </Viewbox>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminReservedTickets}">
+            <Viewbox>
+                <TextBlock Text="Reserved Tickets"/>
+            </Viewbox>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="3"  Margin="5,5,5,5"  Background="Azure" Command="{Binding OpAdminExit}">
+            <Viewbox>
+                <TextBlock Text="EXIT"/>
+            </Viewbox>
+        </Button>
     </Grid>
 </Window>
