@@ -139,8 +139,12 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     {
                         try
                         {
-                            _context.SaveChanges();
-                            MessageBox.Show("Chage Saved");
+                            var result = MessageBox.Show($"Save Changes?", "Save Changes", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                            if (result == MessageBoxResult.Yes)
+                            {
+                                _context.SaveChanges();
+                                MessageBox.Show("Change Saved");
+                            }
                         }
                         catch (Exception ex)
                         {

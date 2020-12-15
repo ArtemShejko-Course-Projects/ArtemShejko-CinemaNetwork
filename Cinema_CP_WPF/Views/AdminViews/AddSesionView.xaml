@@ -3,10 +3,126 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews"
+        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="AddSesionView" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.22*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.35*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Margin="3,3,3,3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Header="Choose Hall">
+                    <ComboBox ItemsSource="{Binding Hallslist}" SelectedItem="{Binding SelectedHall}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="1,1,1,1" Padding="1,1,1,1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding HallName}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Header="Choose Date">
+                    <DatePicker SelectedDate="{Binding SelectedDate}"></DatePicker>
+                </GroupBox>
+                <GroupBox Grid.Column="2" Header="Sort Criteria">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Content="Halls" Grid.Column="0" IsChecked="{Binding HallCheck}"/>
+                        <CheckBox Content="Date" Grid.Column="1" IsChecked="{Binding DateCheck}"/>
+                    </Grid>
+                </GroupBox>
+                <Button Grid.Column="6" Margin="7,7,7,7" Content="Sort" Command="{Binding SortSessions}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Sesion List" Margin="3,3,3,3" Padding="3,3,3,3" Grid.Row="1">
+            <ListBox Background="MintCream" ItemsSource="{Binding SortedSesionList}" SelectedItem="{Binding SelectedSesion}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="5,1,5,1" Text="{Binding Films.FilmName}" MinWidth="75" MaxWidth="75"/>
+                            <TextBlock Grid.Column="1" Margin="5,1,5,1" Text="{Binding Halls.HallName}" MinWidth="75" MaxWidth="75"/>
+                            <TextBlock Grid.Column="2" Margin="5,1,5,1" Text="{Binding Films.Genre.GenreTitle}" MinWidth="75" MaxWidth="75"/>
+                            <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="{Binding FreePlaces}"/>
+                            <TextBlock Grid.Column="4" Margin="5,1,5,1" Text="Free Places -"/>
+                            <TextBlock Grid.Column="5" Margin="5,1,5,1" Text="{Binding Halls.HallPlaceQuantity}"/>
+                            <TextBlock Grid.Column="6" Margin="5,1,5,1" Text="{Binding SessionDate}"/>
+                            <TextBlock Grid.Column="7" Margin="5,1,5,1" Text="{Binding SessionPrice}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="Film Name" Grid.Column="0" Grid.Row="0" Margin="1,1,1,1">
+                <ComboBox ItemsSource="{Binding Filmlist}" SelectedItem="{Binding SelectedSesion.Films}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Margin="1,1,1,1" Padding="1,1,1,1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding FilmName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </GroupBox>
+            <GroupBox Header="Hall Name" Grid.Column="1" Grid.Row="0" Margin="1,1,1,1">
+                <ComboBox ItemsSource="{Binding Hallslist}" SelectedItem="{Binding SelectedSesion.Halls}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Margin="1,1,1,1" Padding="1,1,1,1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding HallName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </GroupBox>
+            <GroupBox Grid.Row="0" Grid.Column="2" Header="Places" Margin="1,1,1,1">
+                <TextBlock Margin="5,1,5,1" Text="{Binding SelectedSesion.Halls.HallPlaceQuantity}"/>
+            </GroupBox>
+            <GroupBox Grid.Row="0" Grid.Column="3" Header="Free Places">
+                <TextBox Background="Honeydew" Margin="5,1,5,1" Text="{Binding SelectedSesion.FreePlaces}"/>
+            </GroupBox>
+            <GroupBox Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Header="Date and Time" Margin="1,1,1,1">
+                <xctk:DateTimePicker ShowButtonSpinner="False"	 Value="{Binding SelectedSesion.SessionDate}">
+                  </xctk:DateTimePicker>                
+            </GroupBox>
+            <GroupBox Grid.Row="0" Grid.Column="6" Header="Price" Margin="1,1,1,1" >
+                <TextBox Background="Honeydew" Margin="5,1,5,1" Text="{Binding SelectedSesion.SessionPrice}"></TextBox>
+            </GroupBox>
+            <Button Background="Azure" Content="Save Changes" Command="{Binding SaveChanges}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Margin="5,5,5,5"/>
+            <Button Background="Azure" Content="Add Session" Command="{Binding AddSession}" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="5,5,5,5"/>
+            <Button Background="Azure" Content="Delete Session" Command="{Binding DeleteSession}" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" Margin="5,5,5,5"/>
+        </Grid>
     </Grid>
+    
 </Window>

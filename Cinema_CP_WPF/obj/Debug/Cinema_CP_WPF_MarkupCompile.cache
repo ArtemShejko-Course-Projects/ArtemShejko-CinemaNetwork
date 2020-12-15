@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\App.xaml
-12123359472
+10478860143
 
-28886514757
-18-494307487
-Views\AdminViews\AddFilmView.xaml;Views\AdminViews\AddHallView.xaml;Views\AdminViews\AddSesionView.xaml;Views\AdminViews\AdminView.xaml;Views\AdminViews\EditHallView.xaml;Views\AdminViews\EditPersonalView.xaml;Views\AdminViews\EditSesionView.xaml;Views\AdminViews\EditUsersView.xaml;Views\AdminViews\TicketsView.xaml;Views\MainView.xaml;Views\UserView.xaml;Views\СashierView.xaml;
+24583849890
+23-21707633
+Views\AdminViews\AddFilmView.xaml;Views\AdminViews\AddHallView.xaml;Views\AdminViews\AddSesionView.xaml;Views\AdminViews\AdminView.xaml;Views\AdminViews\EditPersonalView.xaml;Views\AdminViews\EditUsersView.xaml;Views\AdminViews\TicketsView.xaml;Views\MainView.xaml;Views\UserView.xaml;Views\СashierView.xaml;
 
 False
 

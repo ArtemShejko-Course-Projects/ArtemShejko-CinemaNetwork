@@ -46,7 +46,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         {
             get
             {
-                return opAdminHalls ?? (opAdminHalls = new RelayCommand(x => { EditHallView hv = new EditHallView() { DataContext = new EditHalViewModell() }; hv.Show(); }));
+                return opAdminHalls ?? (opAdminHalls = new RelayCommand(x => { AddHallView hv = new AddHallView() { DataContext = new AddHallViewModel() }; hv.Show(); }));
             }
         }
         public ICommand OpAdminPersonal
