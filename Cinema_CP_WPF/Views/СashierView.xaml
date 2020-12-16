@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Cinema_CP_WPF.ViewsModels"
         d:DataContext="{d:DesignInstance Type=vm:СashierViewModel}"
         mc:Ignorable="d"
-        Title="СashierView" Height="450" Width="800">
+        Title="СashierView" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />

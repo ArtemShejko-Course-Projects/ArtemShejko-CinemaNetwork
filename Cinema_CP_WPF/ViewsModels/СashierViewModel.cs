@@ -137,10 +137,10 @@ namespace Cinema_CP_WPF.ViewsModels
                         if (SelectedSesion != null)
                         {
                             int state = 0;
-                            Ticket tmpplace = SelectedSesion.Ticket.Where(r => r.Place.PlaceRow == h).Where(c => c.Place.PlaceColumn == k).FirstOrDefault();
+                            Place tmpplace = SelectedSesion.Place.Where(r => r.PlaceRow == h).Where(c => c.PlaceColumn == k).FirstOrDefault();
                             if (tmpplace != null)
                             {
-                                state = tmpplace.Place.PlaceState;
+                                state = tmpplace.PlaceState;
                             }
                             if (state == 1)
                             {
@@ -226,24 +226,23 @@ namespace Cinema_CP_WPF.ViewsModels
                             if (CheckValues())
                             {
                                 UpdatePlacesFromSQl();
-                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).FirstOrDefault();
+                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).Where(fs=>fs.FilmSessionsId==SelectedSesion.FilmSessionsId).FirstOrDefault();
                                 if (placeExist == null)
                                 {
                                     if (SelectedSesion.FreePlaces > 0)
                                     {
                                         //PlaceState 0-Free 1-Reserve 2-sell
-                                        Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row, PlaceColumn = Place, PlaceState = 2 }; PlaceList.Add(place);
+                                        Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row, PlaceColumn = Place, PlaceState = 2, FilmSessionsId=SelectedSesion.FilmSessionsId }; PlaceList.Add(place);
                                         SelectedSesion.FreePlaces -= 1;
                                         _context.SaveChanges();
                                         int placeId = place.PlaceId;
-                                        int filmId = SelectedSesion.FilmSessionsId;
                                         decimal price = SelectedSesion.SessionPrice;
-                                        Ticket ticket = new Ticket() { PlaceId = placeId, FilmSessionsId = filmId, Price = price }; Tiketlist.Add(ticket);
+                                        Ticket ticket = new Ticket() { PlaceId = placeId, Price = price }; Tiketlist.Add(ticket);
                                         FillPlaces();
                                         MessageBox.Show("Ticket added");
+                                        Sortedsesionlist.Clear();
                                         foreach (var item in SelectedHall.FilmSessions)
                                         {
-                                            Sortedsesionlist.Clear();
                                             Sortedsesionlist.Add(item);
                                         }
                                         _context.SaveChanges();
@@ -280,7 +279,7 @@ namespace Cinema_CP_WPF.ViewsModels
                         {
                             int placestate = 0;
                             UpdatePlacesFromSQl();
-                            Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).FirstOrDefault();
+                            Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).Where(fs => fs.FilmSessionsId == SelectedSesion.FilmSessionsId).FirstOrDefault();
                             if (placeExist != null)
                             {
                                 placestate = placeExist.PlaceState;
@@ -322,7 +321,7 @@ namespace Cinema_CP_WPF.ViewsModels
                             {
                                 int placestate = 0;
                                 UpdatePlacesFromSQl();
-                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).FirstOrDefault();
+                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).Where(fs => fs.FilmSessionsId == SelectedSesion.FilmSessionsId).FirstOrDefault();
                                 if (placeExist != null)
                                 {
                                     placestate = placeExist.PlaceState;
@@ -334,13 +333,12 @@ namespace Cinema_CP_WPF.ViewsModels
                                         if (tbReserveName.Length != 0)
                                         {
                                             //PlaceState 0-Free 1-Reserve 2-sell
-                                            Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row, PlaceColumn = Place, PlaceState = 1, PlaceFIO = tbReserveName }; PlaceList.Add(place);
+                                            Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row, PlaceColumn = Place, PlaceState = 1, PlaceFIO = tbReserveName, FilmSessionsId=SelectedSesion.FilmSessionsId}; PlaceList.Add(place);
                                             SelectedSesion.FreePlaces += 1;
                                             _context.SaveChanges();
                                             int placeId = place.PlaceId;
-                                            int filmId = SelectedSesion.FilmSessionsId;
                                             decimal price = SelectedSesion.SessionPrice;
-                                            Ticket ticket = new Ticket() { PlaceId = placeId, FilmSessionsId = filmId, Price = price }; Tiketlist.Add(ticket);
+                                            Ticket ticket = new Ticket() { PlaceId = placeId, Price = price }; Tiketlist.Add(ticket);
                                             MessageBox.Show("Ticket reserved");
                                             FillPlaces();
                                             _context.SaveChanges();
@@ -381,7 +379,7 @@ namespace Cinema_CP_WPF.ViewsModels
                             if (CheckValues())
                             {
                                 UpdatePlacesFromSQl();
-                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).Where(f => f.PlaceFIO == tbReserveName).FirstOrDefault();
+                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).Where(f => f.PlaceFIO == tbReserveName).Where(fs=>fs.FilmSessionsId==SelectedSesion.FilmSessionsId).FirstOrDefault();
                                 if (placeExist != null && placeExist.PlaceState == 1)
                                 {
                                     //PlaceState 0-Free 1-Reserve 2-sell

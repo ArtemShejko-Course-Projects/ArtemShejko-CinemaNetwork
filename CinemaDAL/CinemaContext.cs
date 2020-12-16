@@ -45,7 +45,7 @@ namespace CinemaDAL
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<FilmSessions>()
-                .HasMany(e => e.Ticket)
+                .HasMany(e => e.Place)
                 .WithRequired(e => e.FilmSessions)
                 .WillCascadeOnDelete(false);
 

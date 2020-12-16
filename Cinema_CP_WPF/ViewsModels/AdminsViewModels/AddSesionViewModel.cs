@@ -207,7 +207,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     {
                         try
                         {
-                            if (SelectedSesion.Ticket.Count > 0)
+                            if (SelectedSesion.Place.Count > 0)
                             {
                                 MessageBox.Show("Sesion Have Tikets, Can't be Deleted");
                             }

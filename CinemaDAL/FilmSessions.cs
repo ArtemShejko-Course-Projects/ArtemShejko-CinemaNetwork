@@ -11,7 +11,7 @@ namespace CinemaDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FilmSessions()
         {
-            Ticket = new HashSet<Ticket>();
+            Place = new HashSet<Place>();
         }
 
         public int FilmSessionsId { get; set; }
@@ -33,6 +33,6 @@ namespace CinemaDAL
         public virtual Halls Halls { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual ICollection<Place> Place { get; set; }
     }
 }
