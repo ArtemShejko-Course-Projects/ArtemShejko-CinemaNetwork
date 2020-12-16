@@ -236,15 +236,53 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     {
                         try
                         {
-                      
-                            if (DateCheck&&HallCheck)
+
+                            if (DateCheck && HallCheck)
+                            {
+                                List<FilmSessions> SortedsesionlistTmp = SessionList.Where(d => d.SessionDate.Date == SelectedDate.Date).Where(h => h.HallId == SelectedHall.HallId).ToList();
+                                if (SortedsesionlistTmp.Count > 0)
+                                {
+                                    SortedSesionList.Clear();
+                                    foreach (var sesion in SortedsesionlistTmp)
+                                    {                                   
+                                        SortedSesionList.Add(sesion);
+                                    }
+                                }
+                                else
+                                {
+                                    if (SortedSesionList != null)
+                                    {
+                                        SortedSesionList.Clear();
+                                    }
+                                }
+                            }
+                            else if (DateCheck)
                             {
                                 List<FilmSessions> SortedsesionlistTmp = SessionList.Where(d => d.SessionDate.Date == SelectedDate.Date).ToList();
                                 if (SortedsesionlistTmp.Count > 0)
                                 {
+                                    SortedSesionList.Clear();
                                     foreach (var sesion in SortedsesionlistTmp)
                                     {
+                                        SortedSesionList.Add(sesion);
+                                    }
+                                }
+                                else
+                                {
+                                    if (SortedSesionList != null)
+                                    {
                                         SortedSesionList.Clear();
+                                    }
+                                }
+                            }
+                            else if (HallCheck)
+                            {
+                                List<FilmSessions> SortedsesionlistTmp = SessionList.Where(d => d.HallId == SelectedHall.HallId).ToList();
+                                if (SortedsesionlistTmp.Count > 0)
+                                {
+                                    SortedSesionList.Clear();
+                                    foreach (var sesion in SortedsesionlistTmp)
+                                    {
                                         SortedSesionList.Add(sesion);
                                     }
                                 }

@@ -28,7 +28,6 @@ namespace Cinema_CP_WPF.ViewsModels
         ObservableCollection<Label> _selectedHallplaces;
         DateTime _dpDate;
         Grid _placeGridView;
-        ObservableCollection<Grid> grids;
 
 
         private ICommand _sellTicket;
@@ -40,6 +39,31 @@ namespace Cinema_CP_WPF.ViewsModels
         public int Row { get; set; }
         public string tbReserveName { get; set; }
 
+        
+        public СashierViewModel()
+        {
+            _context = new CinemaContext();
+            _context.Halls.Include(f => f.FilmSessions).Load();
+            _context.FilmSessions.Include(f => f.Films).Load();
+            _context.Place.Include(t => t.Ticket).Include(h => h.Halls).Load();
+            _context.Ticket.Load();
+            PlaceGridView = new Grid();
+            Hallslist = _context.Halls.Local;
+            Sesionlist = _context.FilmSessions.Local;
+            PlaceList = _context.Place.Local;
+            Tiketlist = _context.Ticket.Local;
+            SelectedHall = Hallslist.FirstOrDefault();
+            Sortedsesionlist = new ObservableCollection<FilmSessions>();
+            SelectedDate = DateTime.Now;
+            tbReserveName = String.Empty;
+        }
+
+        void UpdatePlacesFromSQl()
+        {
+            _context.Place.Include(t => t.Ticket).Include(h => h.Halls).Load();
+            PlaceList = _context.Place.Local;
+            FillPlaces();
+        }
         public bool CheckValues()
         {
             if (SelectedSesion != null)
@@ -68,40 +92,26 @@ namespace Cinema_CP_WPF.ViewsModels
                 return false;
             }
         }
-        public СashierViewModel()
-        {
-            _context = new CinemaContext();
-            _context.Halls.Include(f => f.FilmSessions).Load();
-            _context.FilmSessions.Include(f => f.Films).Load();
-            _context.Place.Include(t => t.Ticket).Include(h => h.Halls).Load();
-            _context.Ticket.Load();
-            PlaceGridView = new Grid();
-            Hallslist = _context.Halls.Local;
-            Sesionlist = _context.FilmSessions.Local;
-            PlaceList = _context.Place.Local;
-            Tiketlist = _context.Ticket.Local;
-            SelectedHall = Hallslist.FirstOrDefault();
-            Sortedsesionlist = new ObservableCollection<FilmSessions>();
-            SelectedDate = DateTime.Now;
-            tbReserveName = String.Empty;
-        }
         public void SortSesions()
         {
-            List<FilmSessions> SortedsesionlistTmp = SelectedHall.FilmSessions.Where(d => d.SessionDate.Date == SelectedDate.Date).ToList();
-            if (SortedsesionlistTmp.Count > 0)
+            if (SelectedHall != null)
             {
-                foreach (var sesion in SortedsesionlistTmp)
+                List<FilmSessions> SortedsesionlistTmp = SelectedHall.FilmSessions.Where(d => d.SessionDate.Date == SelectedDate.Date).ToList();
+                if (SortedsesionlistTmp.Count > 0)
                 {
                     Sortedsesionlist.Clear();
-                    Sortedsesionlist.Add(sesion);
-                    FillPlaces();
+                    foreach (var sesion in SortedsesionlistTmp)
+                    {
+                        Sortedsesionlist.Add(sesion);
+                        FillPlaces();
+                    }
                 }
-            }
-            else
-            {
-                if (Sortedsesionlist != null)
+                else
                 {
-                    Sortedsesionlist.Clear();
+                    if (Sortedsesionlist != null)
+                    {
+                        Sortedsesionlist.Clear();
+                    }
                 }
             }
             //MessageBox.Show($"Date Changed {_dpDate.ToString()}");
@@ -120,9 +130,9 @@ namespace Cinema_CP_WPF.ViewsModels
                     tmpGrid.ColumnDefinitions.Add(new ColumnDefinition());
                 }
 
-                for (int h = 0; h < SelectedHall.HallRow; h++)
+                for (int h = 1; h <= SelectedHall.HallRow; h++)
                 {
-                    for (int k = 0; k < SelectedHall.HallColumn; k++)
+                    for (int k = 1; k <= SelectedHall.HallColumn; k++)
                     {
                         if (SelectedSesion != null)
                         {
@@ -136,7 +146,7 @@ namespace Cinema_CP_WPF.ViewsModels
                             {
                                 Label tmp = new Label()
                                 {
-                                    Content = $"{h + 1}-{k + 1}",
+                                    Content = $"{h}-{k}",
                                     Name = $"Label{h}{k}",
                                     Background = new SolidColorBrush(Color.FromRgb(255, 204, 0)),
                                     Margin = new Thickness(3, 3, 3, 3),
@@ -144,15 +154,15 @@ namespace Cinema_CP_WPF.ViewsModels
                                     VerticalContentAlignment = VerticalAlignment.Center,
                                     HorizontalContentAlignment = HorizontalAlignment.Center
                                 };
-                                Grid.SetRow(tmp, h);
-                                Grid.SetColumn(tmp, k);
+                                Grid.SetRow(tmp, h-1);
+                                Grid.SetColumn(tmp, k-1);
                                 tmpGrid.Children.Add(tmp);
                             }
                             else if (state == 2)
                             {
                                 Label tmp = new Label()
                                 {
-                                    Content = $"{h + 1}-{k + 1}",
+                                    Content = $"{h}-{k}",
                                     Name = $"Label{h}{k}",
                                     Background = new SolidColorBrush(Color.FromRgb(204, 51, 0)),
                                     Margin = new Thickness(3, 3, 3, 3),
@@ -160,15 +170,15 @@ namespace Cinema_CP_WPF.ViewsModels
                                     VerticalContentAlignment = VerticalAlignment.Center,
                                     HorizontalContentAlignment = HorizontalAlignment.Center
                                 };
-                                Grid.SetRow(tmp, h);
-                                Grid.SetColumn(tmp, k);
+                                Grid.SetRow(tmp, h-1);
+                                Grid.SetColumn(tmp, k-1);
                                 tmpGrid.Children.Add(tmp);
                             }
                             else
                             {
                                 Label tmp = new Label()
                                 {
-                                    Content = $"{h + 1}-{k + 1}",
+                                    Content = $"{h}-{k}",
                                     Name = $"Label{h}{k}",
                                     Background = new SolidColorBrush(Color.FromRgb(204, 255, 204)),
                                     Margin = new Thickness(3, 3, 3, 3),
@@ -176,8 +186,8 @@ namespace Cinema_CP_WPF.ViewsModels
                                     VerticalContentAlignment = VerticalAlignment.Center,
                                     HorizontalContentAlignment = HorizontalAlignment.Center
                                 };
-                                Grid.SetRow(tmp, h);
-                                Grid.SetColumn(tmp, k);
+                                Grid.SetRow(tmp, h-1);
+                                Grid.SetColumn(tmp, k-1);
                                 tmpGrid.Children.Add(tmp);
                             }
                         }
@@ -185,7 +195,7 @@ namespace Cinema_CP_WPF.ViewsModels
                         {
                             Label tmp = new Label()
                             {
-                                Content = $"{h + 1}-{k + 1}",
+                                Content = $"{h}-{k}",
                                 Name = $"Label{h}{k}",
                                 Background = new SolidColorBrush(Color.FromRgb(204, 255, 204)),
                                 Margin = new Thickness(3, 3, 3, 3),
@@ -193,8 +203,8 @@ namespace Cinema_CP_WPF.ViewsModels
                                 VerticalContentAlignment = VerticalAlignment.Center,
                                 HorizontalContentAlignment = HorizontalAlignment.Center
                             };
-                            Grid.SetRow(tmp, h);
-                            Grid.SetColumn(tmp, k);
+                            Grid.SetRow(tmp, h-1);
+                            Grid.SetColumn(tmp, k-1);
                             tmpGrid.Children.Add(tmp);
                         }
                     }
@@ -215,13 +225,14 @@ namespace Cinema_CP_WPF.ViewsModels
                         {
                             if (CheckValues())
                             {
-                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row-1).Where(p => p.PlaceColumn == Place-1).FirstOrDefault();
+                                UpdatePlacesFromSQl();
+                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).FirstOrDefault();
                                 if (placeExist == null)
                                 {
                                     if (SelectedSesion.FreePlaces > 0)
                                     {
                                         //PlaceState 0-Free 1-Reserve 2-sell
-                                        Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row - 1, PlaceColumn = Place - 1, PlaceState = 2 }; PlaceList.Add(place);
+                                        Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row, PlaceColumn = Place, PlaceState = 2 }; PlaceList.Add(place);
                                         SelectedSesion.FreePlaces -= 1;
                                         _context.SaveChanges();
                                         int placeId = place.PlaceId;
@@ -241,6 +252,10 @@ namespace Cinema_CP_WPF.ViewsModels
                                     {
                                         MessageBox.Show("All Ticket Sold");
                                     }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ticket already Sold or Reserved. Please choose another");
                                 }
                             }
                         }
@@ -264,7 +279,8 @@ namespace Cinema_CP_WPF.ViewsModels
                         if (CheckValues())
                         {
                             int placestate = 0;
-                            Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row - 1).Where(p => p.PlaceColumn == Place - 1).FirstOrDefault();
+                            UpdatePlacesFromSQl();
+                            Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).FirstOrDefault();
                             if (placeExist != null)
                             {
                                 placestate = placeExist.PlaceState;
@@ -305,7 +321,8 @@ namespace Cinema_CP_WPF.ViewsModels
                             if (CheckValues())
                             {
                                 int placestate = 0;
-                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row - 1).Where(p => p.PlaceColumn == Place - 1).FirstOrDefault();
+                                UpdatePlacesFromSQl();
+                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).FirstOrDefault();
                                 if (placeExist != null)
                                 {
                                     placestate = placeExist.PlaceState;
@@ -317,7 +334,7 @@ namespace Cinema_CP_WPF.ViewsModels
                                         if (tbReserveName.Length != 0)
                                         {
                                             //PlaceState 0-Free 1-Reserve 2-sell
-                                            Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row - 1, PlaceColumn = Place - 1, PlaceState = 1, PlaceFIO = tbReserveName }; PlaceList.Add(place);
+                                            Place place = new Place() { HallId = SelectedHall.HallId, PlaceRow = Row, PlaceColumn = Place, PlaceState = 1, PlaceFIO = tbReserveName }; PlaceList.Add(place);
                                             SelectedSesion.FreePlaces += 1;
                                             _context.SaveChanges();
                                             int placeId = place.PlaceId;
@@ -363,7 +380,8 @@ namespace Cinema_CP_WPF.ViewsModels
                         {
                             if (CheckValues())
                             {
-                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row - 1).Where(p => p.PlaceColumn == Place - 1).Where(f => f.PlaceFIO == tbReserveName).FirstOrDefault();
+                                UpdatePlacesFromSQl();
+                                Place placeExist = PlaceList.Where(h => h.HallId == SelectedHall.HallId).Where(r => r.PlaceRow == Row).Where(p => p.PlaceColumn == Place).Where(f => f.PlaceFIO == tbReserveName).FirstOrDefault();
                                 if (placeExist != null && placeExist.PlaceState == 1)
                                 {
                                     //PlaceState 0-Free 1-Reserve 2-sell
@@ -406,19 +424,6 @@ namespace Cinema_CP_WPF.ViewsModels
             }
         }
 
-        public ObservableCollection<FilmSessions> Sortedsesionlist
-        {
-            get
-            {
-                return _sortedsesionlist;
-            }
-            set
-            {
-                _sortedsesionlist = value;
-                RaisePropertyChanged();
-            }
-        }
-
         public FilmSessions SelectedSesion
         {
             get
@@ -441,7 +446,14 @@ namespace Cinema_CP_WPF.ViewsModels
             }
             set
             {
-                _dpDate = value;
+                if (value > _dpDate)
+                {
+                    _dpDate = value;
+                }
+                else
+                {
+                    MessageBox.Show("Can't sell ticket to previous date");
+                }
                 SortSesions();
                 FillPlaces();
                 RaisePropertyChanged();
@@ -457,6 +469,18 @@ namespace Cinema_CP_WPF.ViewsModels
             set
             {
                 _placeGridView = value;
+                RaisePropertyChanged();
+            }
+        }
+        public ObservableCollection<FilmSessions> Sortedsesionlist
+        {
+            get
+            {
+                return _sortedsesionlist;
+            }
+            set
+            {
+                _sortedsesionlist = value;
                 RaisePropertyChanged();
             }
         }

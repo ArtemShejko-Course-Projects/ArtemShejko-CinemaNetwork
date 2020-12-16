@@ -27,5 +27,12 @@ namespace CinemaDAL
 
         [StringLength(64)]
         public string CinemaUserEmail { get; set; }
+
+        [StringLength(128)]
+        public string CinemaUserRole { get; set; }
+
+        public bool? CinemaUserLogged { get; set; }
+
+        public int? CinemaUserВiscount { get; set; }
     }
 }

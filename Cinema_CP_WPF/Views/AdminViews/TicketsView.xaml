@@ -7,6 +7,48 @@
         mc:Ignorable="d"
         Title="TicketsView" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="Ticket List" Margin="1,1,1,1">
+            <ListBox ItemsSource="{Binding TicketList}" SelectedItem="{Binding SelectedTicket}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="5,1,5,1" Text="{Binding FilmSessions.Films.FilmName}" MinWidth="75" MaxWidth="75"/>
+                            <TextBlock Grid.Column="1" Margin="5,1,5,1" Text="Hall" MinWidth="25" MaxWidth="25"/>
+                            <TextBlock Grid.Column="2" Margin="5,1,5,1" Text="{Binding Place.Halls.HallName}" MinWidth="25" MaxWidth="25"/>
+                            <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="Row" MinWidth="25" MaxWidth="25"/>
+                            <TextBlock Grid.Column="4" Margin="5,1,5,1" Text="{Binding Place.PlaceRow}" MinWidth="25" MaxWidth="25"/>
+                            <TextBlock Grid.Column="5" Margin="5,1,5,1" Text="Place" MinWidth="25" MaxWidth="25"/>
+                            <TextBlock Grid.Column="6" Margin="5,1,5,1" Text="{Binding Place.PlaceColumn}" MinWidth="25" MaxWidth="25"/>
+                            <!--<TextBlock Grid.Column="1" Margin="5,1,5,1" Text="{Binding Halls.HallName}" MinWidth="75" MaxWidth="75"/>
+                            <TextBlock Grid.Column="2" Margin="5,1,5,1" Text="{Binding Films.FilmGenre}" MinWidth="75" MaxWidth="75"/>
+                            <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="{Binding Places}"/>
+                            <TextBlock Grid.Column="4" Margin="5,1,5,1" Text="Free Places -"/>
+                            <TextBlock Grid.Column="5" Margin="5,1,5,1" Text="{Binding FreePlaces}"/>
+                            <TextBlock Grid.Column="6" Margin="5,1,5,1" Text="{Binding SessionDate}"/>-->
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Places List" Margin="1,1,1,1">
+            
+        </GroupBox>
     </Grid>
 </Window>

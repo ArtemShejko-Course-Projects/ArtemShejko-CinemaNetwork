@@ -7,6 +7,80 @@
         mc:Ignorable="d"
         Title="AddHallView" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.75*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Background="Azure">
+            </GroupBox>
+            <GroupBox Grid.Row="0" Header="Halls" Background="Azure" Margin="2,2,2,2">
+                <ListBox Background="MintCream" VerticalAlignment="Top" ItemsSource="{Binding Hallslist}"  SelectedItem="{Binding SelectedHall}" Margin="3,3,3,3">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="5,1,5,1" Text="{Binding HallName}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="1" Margin="5,1,5,1" Text="{Binding HallPlaceQuantity}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="2" Margin="5,1,5,1" Text="Row"/>
+                                <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="{Binding HallRow}"/>
+                                <TextBlock Grid.Column="4" Margin="5,1,5,1" Text="Place in Row" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="5" Margin="5,1,5,1" Text="{Binding HallColumn}"/>                     
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+            <Grid Grid.Row="2" >
+                <GroupBox Grid.Row="0" Grid.Column="0" Header="Sell Ticket" Background="Azure" Margin="2,2,2,2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="82*"/>
+                            <ColumnDefinition Width="96*"/>
+                            <ColumnDefinition Width="96*"/>
+                            <ColumnDefinition Width="96*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Name" Padding="1,1,1,1" Margin="3,3,2.667,3" Grid.ColumnSpan="2"/>
+                        <Label Grid.Row="0" Grid.Column="3" Content="Place Quantity" Padding="1,1,1,1" Margin="3.333,3,2.667,3"/>
+                        <TextBox Text="{Binding SelectedHall.HallName}" Grid.Row="0" Grid.Column="2" Margin="3.333,3,2.667,3"/>
+                        <TextBox Text="{Binding SelectedHall.HallPlaceQuantity}" Grid.Row="0" Grid.Column="4" Margin="3.333,3,2.667,3"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Row" Padding="1,1,1,1" Margin="3,3,2.667,3" Grid.ColumnSpan="2"/>
+                        <Label Grid.Row="1" Grid.Column="3" Content="Place" Padding="1,1,1,1" Margin="3.333,3,2.667,3"/>
+                        <TextBox Text="{Binding SelectedHall.HallRow}" Grid.Row="1" Grid.Column="2" Margin="3.333,3,2.667,3"/>
+                        <TextBox Text="{Binding SelectedHall.HallColumn}" Grid.Row="1" Grid.Column="4" Margin="3.333,3,2.667,3"/>
+                        <Button Background="LightSteelBlue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="Add Hall" Command ="{Binding AddHall}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                        <Button Background="LightSteelBlue" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Delete Hall" Command ="{Binding DeleteHall}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                        <Button Background="LightSteelBlue" Grid.Row="3" Grid.ColumnSpan="5" Content="Save Changes" Command ="{Binding SaveChanges}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.07*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding PlaceGridViewHall}" Background="Azure" Margin="2,2,2,2">
+            </GroupBox>
+            <Label Grid.Row="0" Margin="2,2,2,2" Padding="1,1,1,1" Content="SCREEN" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Background="PowderBlue"/>
+        </Grid>
     </Grid>
 </Window>

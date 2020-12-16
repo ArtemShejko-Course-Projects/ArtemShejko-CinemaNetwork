@@ -28,6 +28,8 @@ namespace CinemaDAL
 
         public int HallColumn { get; set; }
 
+        public int? Hall { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmSessions> FilmSessions { get; set; }
 

@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <GroupBox  Grid.Row="0" Grid.Column="0" Header="Film List" Margin="1,1,1,1">
             <Grid>
-                <ListBox Background="MintCream" ItemsSource="{Binding Films}" SelectedItem="{Binding SelectedFilm}">
+                <ListBox Background="MintCream" ItemsSource="{Binding SortedFilmsListFVM}" SelectedItem="{Binding SelectedFilm}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -73,6 +73,7 @@
                         </Grid.RowDefinitions>
                         <Button Grid.Row="0" Content="Add Image" Command="{Binding AddImage}" Margin="5,5,5,5" Background="Azure"/>
                         <Button Grid.Row="1" Content="Add Film" Command="{Binding AddNewFilm}" Margin="5,5,5,5" Background="Azure"/>
+                        <Button Grid.Row="2" Content="Delete Film" Command="{Binding DeleteFilm}" Margin="5,5,5,5" Background="Azure"/>
                         <Button Grid.Row="3" Content="Save Changes" Command="{Binding SaveChanges}" Margin="5,5,5,5" Background="Azure"/>
                     </Grid>
                 </GroupBox>
@@ -105,7 +106,7 @@
                     <DatePicker SelectedDate="{Binding SelectedFilm.FilmEndDate}"/>
                 </GroupBox>
                 <GroupBox Grid.Row="1" Grid.Column="0" Header="Genre">
-                    <ComboBox  ItemsSource="{Binding Genre}" SelectedItem="{Binding SelectedFilm.Genre, Mode=TwoWay}">
+                    <ComboBox  ItemsSource="{Binding GenreList}" SelectedItem="{Binding SelectedFilm.Genre, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding GenreTitle}"/>
