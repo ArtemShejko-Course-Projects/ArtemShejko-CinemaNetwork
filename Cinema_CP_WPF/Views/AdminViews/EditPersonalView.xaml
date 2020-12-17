@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="0.15*"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <GroupBox Header="Employee List" Grid.Column="0" Grid.Row="0" Margin="1,1,1,1" Padding="1,1,1,1">
             <ListBox Background="MintCream" ItemsSource="{Binding SortedEmployeeList}" SelectedItem="{Binding SelectedEmployee}">
@@ -84,11 +84,21 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Background="LightSteelBlue" Content="Add Employee" Margin="5,5,5,5" Command="{Binding AddEmployee}"></Button>
-                <Button Grid.Column="1" Background="LightSteelBlue" Content="Delete Employee" Margin="5,5,5,5" Command="{Binding DeleteEmployee}"></Button>
-                <Button Grid.Column="2" Background="LightSteelBlue" Content="Save Changes" Margin="5,5,5,5" Command="{Binding SaveChanges}"></Button>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Column="0" Grid.RowSpan="4" Header="Employee Photo">
+                    <Image Source="{Binding EmployeePhoto}" HorizontalAlignment="Left" 
+                         Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Bottom"/>
+                </GroupBox>
+                <Button Grid.Column="1" Grid.Row="0" Background="LightSteelBlue" Content="Add Photo" Margin="5,5,5,5" Command="{Binding AddPhotoEmp}"></Button>
+                <Button Grid.Column="1" Grid.Row="1" Background="LightSteelBlue" Content="Add Employee" Margin="5,5,5,5" Command="{Binding AddEmployee}"></Button>
+                <Button Grid.Column="1" Grid.Row="2" Background="LightSteelBlue" Content="Delete Employee" Margin="5,5,5,5" Command="{Binding DeleteEmployee}"></Button>
+                <Button Grid.Column="1" Grid.Row="3" Background="LightSteelBlue" Content="Save Changes" Margin="5,5,5,5" Command="{Binding SaveChanges}"></Button>
             </Grid>
         </GroupBox>
     </Grid>

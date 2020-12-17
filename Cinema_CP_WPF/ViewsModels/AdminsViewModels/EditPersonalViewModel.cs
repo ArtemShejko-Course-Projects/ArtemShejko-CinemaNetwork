@@ -1,10 +1,12 @@
 ﻿using CinemaDAL;
+using Microsoft.Win32;
 using MVVMHelper.Commands;
 using MVVMHelper.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         ObservableCollection<CinemaStaff> _sortedemployeelist;
         CinemaStaff _selectedStuff;
         CinemaContext _cinemaContext;
-
+        string _EmployeePhoto;
         public EditPersonalViewModel()
         {
             _cinemaContext = new CinemaContext();
@@ -32,6 +34,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         ICommand _addEmp;
         ICommand _deleteEmp;
         ICommand _saveChange;
+        ICommand _addPhotoEmp;
 
 
         void SortList()
@@ -47,6 +50,26 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             }
         }
 
+        public string EmployeePhoto
+        {
+            get { return _EmployeePhoto; }
+            set
+            {
+                _EmployeePhoto = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public void UpdateEmployeePhoto()
+        {
+            string ImageUri = String.Empty;
+            if (SelectedEmployee != null)
+            {
+                DirectoryInfo dir = new DirectoryInfo(".");
+                EmployeePhoto = $"{dir.FullName}\\{SelectedEmployee.CinemaStaffPhoto}";
+            }
+
+        }
         public ObservableCollection<CinemaStaff> SortedEmployeeList
         {
             get { return _sortedemployeelist; }
@@ -74,6 +97,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             set
             {
                 _selectedStuff = value;
+                UpdateEmployeePhoto();
                 RaisePropertyChanged();
             }
         }
@@ -94,9 +118,9 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                             CinemaStaffLogin = TmpUserLogin,
                             CinemaStaffPass = TmpUserLogin,
                             CinemaStaffPost = "Enter Post",
-                            CinemaStaffrName = "Enter Name",
+                            CinemaStaffName = "Enter Name",
                             CinemaStaffPhone = "Enter Phone",
-                            CinemaStaffEmail = "Enter Email",                 
+                            CinemaStaffEmail = "Enter Email",
                         };
                         EmployeeList.Add(cemp);
                         SortList();
@@ -118,8 +142,11 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                 {
                     try
                     {
-                        EmployeeList.Remove(SelectedEmployee);
-                        SortList();
+                        if (SelectedEmployee != null)
+                        {
+                            EmployeeList.Remove(SelectedEmployee);
+                            SortList();
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -150,6 +177,44 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     }
                 }
                ));
+            }
+        }
+
+        public ICommand AddPhotoEmp
+        {
+            get
+            {
+                return _addPhotoEmp ?? (_addPhotoEmp = new RelayCommand(
+                    x =>
+                    {
+                        try
+                        {
+                            if (SelectedEmployee != null)
+                            {
+                                OpenFileDialog fileDialog = new OpenFileDialog();
+                                fileDialog.ShowDialog();
+                                DirectoryInfo dirInfo = new DirectoryInfo("EmployeesPhoto");
+                                if (!dirInfo.Exists)
+                                {
+                                    dirInfo.Create();
+                                }
+                                string destfilename = $"EmployeesPhoto\\{SelectedEmployee.CinemaStaffId}{SelectedEmployee.CinemaStaffLogin}{fileDialog.SafeFileName}";
+                                File.Copy(fileDialog.FileName, destfilename, true);
+                                SelectedEmployee.CinemaStaffPhoto = destfilename;
+                                UpdateEmployeePhoto();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please choose Employee");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"{ex.Message}");
+                        }
+                    }
+
+                    ));
             }
         }
     }
