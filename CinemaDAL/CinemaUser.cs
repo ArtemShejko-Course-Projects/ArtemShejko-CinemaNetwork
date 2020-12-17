@@ -41,6 +41,9 @@ namespace CinemaDAL
 
         public int? CinemaUserВiscount { get; set; }
 
+        [StringLength(2048)]
+        public string CinemaUserPhoto { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Ticket { get; set; }
     }

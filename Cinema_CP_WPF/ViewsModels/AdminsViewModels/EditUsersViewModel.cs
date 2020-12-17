@@ -26,10 +26,10 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             _cinemaContext = new CinemaContext();
             SortedUserList = new ObservableCollection<CinemaUser>();
             _cinemaContext.CinemaUser.Include(t => t.Ticket).Load();
-            _cinemaContext.Ticket.Include(p => p.Place).Load();
+            _cinemaContext.Ticket.Include(p => p.Place).Include(h=>h.Place.Halls).Include(fm=>fm.Place.FilmSessions).Include(f=>f.Place.FilmSessions.Films).Load();
             UserList = _cinemaContext.CinemaUser.Local;
+            TicketList = _cinemaContext.Ticket.Local;
             SortList();
-            SelectedUser = SortedUserList.FirstOrDefault();
         }
 
         ICommand _addUser;
@@ -39,14 +39,14 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
 
         void SortList()
         {
-            if (UserList != null)
+            List<CinemaUser> tmpuserList = UserList.OrderBy(l => l.CinemaUserLogin).ToList();
+            if (tmpuserList != null)
             {
-                SortedUserList.Clear();
-                var tmpuserList = UserList.OrderBy(l => l.CinemaUserLogin);
-                foreach (var user in tmpuserList)
-                {
-                    SortedUserList.Add(user);
-                }
+                SortedUserList.Clear();    
+            }
+            foreach (var user in tmpuserList)
+            {
+                SortedUserList.Add(user);
             }
         }
 
@@ -77,8 +77,6 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                 RaisePropertyChanged();
             }
         }
-
-
         public CinemaUser SelectedUser
         {
             get
@@ -128,16 +126,31 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                 {
                     try
                     {
-                        Random rand = new Random();
-                        int l = rand.Next(1, 10000) + UserList.Count;
-                        string TmpUserLogin = $"NewLogin_{l} ";
-                        CinemaUser cuser = new CinemaUser()
-                        {
-                            CinemaUserLogin = TmpUserLogin,
-                            CinemaUserPass = TmpUserLogin
-                        };
-                        UserList.Add(cuser);
+                        UserList.Remove(SelectedUser);
                         SortList();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+               ));
+            }
+        }
+
+        public ICommand SaveChanges
+        {
+            get
+            {
+                return _saveChange ?? (_saveChange = new RelayCommand(x =>
+                {
+                    try
+                    {
+                        var result=MessageBox.Show("Save changes?", "Save", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (result==MessageBoxResult.Yes)
+                        {
+                            _cinemaContext.SaveChanges();
+                        }
                     }
                     catch (Exception ex)
                     {

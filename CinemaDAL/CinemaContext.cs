@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
@@ -14,18 +14,26 @@ namespace CinemaDAL
 
         public virtual DbSet<CinemaStaff> CinemaStaff { get; set; }
         public virtual DbSet<CinemaUser> CinemaUser { get; set; }
+        public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Films> Films { get; set; }
         public virtual DbSet<FilmSessions> FilmSessions { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<Halls> Halls { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
+        public virtual DbSet<СinemaDetails> СinemaDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CinemaStaff>()
                 .Property(e => e.CinemaStaffSalary)
                 .HasPrecision(19, 4);
+
+            modelBuilder.Entity<City>()
+                .HasMany(e => e.СinemaDetails)
+                .WithRequired(e => e.City)
+                .HasForeignKey(e => e.СinemaDetailsCity)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Films>()
                 .Property(e => e.FilmActors)
@@ -77,6 +85,11 @@ namespace CinemaDAL
             modelBuilder.Entity<Ticket>()
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);
+
+            modelBuilder.Entity<СinemaDetails>()
+                .HasMany(e => e.Halls)
+                .WithRequired(e => e.СinemaDetails)
+                .WillCascadeOnDelete(false);
         }
     }
 }

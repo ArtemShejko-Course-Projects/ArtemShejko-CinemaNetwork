@@ -22,6 +22,8 @@ namespace CinemaDAL
         [StringLength(50)]
         public string HallName { get; set; }
 
+        public int СinemaDetailsId { get; set; }
+
         public int HallPlaceQuantity { get; set; }
 
         public int HallRow { get; set; }
@@ -32,6 +34,8 @@ namespace CinemaDAL
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmSessions> FilmSessions { get; set; }
+
+        public virtual СinemaDetails СinemaDetails { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Place> Place { get; set; }

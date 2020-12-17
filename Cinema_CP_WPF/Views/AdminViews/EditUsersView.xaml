@@ -29,7 +29,7 @@
                             <TextBlock Grid.Column="0" Text="{Binding CinemaUserLogin}" Margin="1,1,1,1" Padding="1,1,1,1"/>
                             <TextBlock Grid.Column="1" Text="{Binding CinemaUserName}" Margin="1,1,1,1" Padding="1,1,1,1"/>
                             <TextBlock Grid.Column="2" Text="{Binding CinemaUserPhone}" Margin="1,1,1,1" Padding="1,1,1,1"/>
-                            <TextBlock Grid.Column="2" Text="{Binding CinemaUserEmail}" Margin="1,1,1,1" Padding="1,1,1,1"/>
+                            <TextBlock Grid.Column="3" Text="{Binding CinemaUserEmail}" Margin="1,1,1,1" Padding="1,1,1,1"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -68,10 +68,26 @@
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="6" Text="{Binding SelectedUser.CinemaUserВiscount}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="1" Grid.Row="7" Text="* - Required Field" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <GroupBox Grid.Row="8" Grid.ColumnSpan="2" Header="Ticket List">
-                    <ListBox ItemsSource="{Binding SelectedUser.Ticket}">
-                        <StackPanel>
-                            <TextBlock></TextBlock>
-                        </StackPanel>                    
+                    <ListBox Background="MintCream" ItemsSource="{Binding SelectedUser.Ticket}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Hall - "></TextBlock>
+                                    <TextBlock Text="{Binding Place.Halls.HallName}"></TextBlock>
+                                    <TextBlock Text=" | "></TextBlock>
+                                    <TextBlock Text="Film - "></TextBlock>
+                                    <TextBlock Text="{Binding Place.FilmSessions.Films.FilmName}"></TextBlock>
+                                    <TextBlock Text=" | "></TextBlock>
+                                    <TextBlock Text="Date - "></TextBlock>
+                                    <TextBlock Text="{Binding Place.FilmSessions.SessionDate}"></TextBlock>
+                                    <TextBlock Text=" | "></TextBlock>
+                                    <TextBlock Text=" Row - "></TextBlock>
+                                    <TextBlock Text="{Binding Place.PlaceRow}"></TextBlock>
+                                    <TextBlock Text=" Place - "></TextBlock>
+                                    <TextBlock Text="{Binding Place.PlaceColumn}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>                
+                        </ListBox.ItemTemplate>
                     </ListBox>
                 </GroupBox>
             </Grid>
