@@ -9,6 +9,12 @@ namespace CinemaDAL
     [Table("CinemaUser")]
     public partial class CinemaUser
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CinemaUser()
+        {
+            Ticket = new HashSet<Ticket>();
+        }
+
         public int CinemaUserId { get; set; }
 
         [Required]
@@ -34,5 +40,8 @@ namespace CinemaDAL
         public bool? CinemaUserLogged { get; set; }
 
         public int? CinemaUserВiscount { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ticket> Ticket { get; set; }
     }
 }

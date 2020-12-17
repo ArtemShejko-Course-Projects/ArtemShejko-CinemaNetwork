@@ -48,8 +48,8 @@
         </GroupBox>
         <GroupBox Grid.Row="0" Grid.Column="2">
             <StackPanel>
-            <Label Background="DarkRed" Content="State 1 - Sold" Margin="1,1,1,1" Padding="1,1,1,1"/>
-             <Label Background="DarkOrange" Content="State 2 - Reserved" Margin="1,1,1,1" Padding="1,1,1,1"/>
+                <Label Background="#FFC900" Content="State 1 - Reserved" Margin="1,1,1,1" Padding="1,1,1,1"/>
+                <Label Background="#CC3300" Content="State 2 - Sold" Margin="1,1,1,1" Padding="1,1,1,1"/>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="0" Grid.Column="0">

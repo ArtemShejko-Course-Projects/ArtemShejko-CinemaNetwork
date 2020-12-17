@@ -165,10 +165,13 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     try
                     {
                         Ticket ticket = TicketList.Where(pid =>pid.PlaceId==SelectedPlace.PlaceId).FirstOrDefault();
-                        if (ticket != null)
+                        if (ticket == null)
                         {
                             Places.Remove(SelectedPlace);
-                            UpdateSortedTicketList();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Before delete this place delete ticket with ID={ticket.TicketId}","Error",MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     catch (Exception ex)
@@ -199,6 +202,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         {
             if (TicketList != null)
             {
+                SortedTicketList.Clear();
                 foreach (var ticket in TicketList)
                 {
                     SortedTicketList.Add(ticket);

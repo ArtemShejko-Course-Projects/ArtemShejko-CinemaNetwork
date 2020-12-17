@@ -48,9 +48,9 @@
                 <TextBlock Text="PERSONAL"/>
             </Viewbox>
         </Button>
-        <Button Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminReservedTickets}">
+        <Button Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Background="Azure" Command="{Binding OpAdminCinemaList}">
             <Viewbox>
-                <TextBlock Text="Reserved Tickets"/>
+                <TextBlock Text="Cinema List"/>
             </Viewbox>
         </Button>
         <Button Grid.Column="1" Grid.Row="3"  Margin="5,5,5,5"  Background="Azure" Command="{Binding OpAdminExit}">

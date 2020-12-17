@@ -13,47 +13,55 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
 {
     public class AdminViewModel
     {
-        private ICommand opAdminFilms;
-        private ICommand opAdminSesions;
-        private ICommand opAdminTickets;
-        private ICommand opAdminHalls;
-        private ICommand opAdminPersonal;
-        private ICommand opAdminReservedTickets;
-        private ICommand opAdminExit;
+        private ICommand _opAdminFilms;
+        private ICommand _opAdminSesions;
+        private ICommand _opAdminTickets;
+        private ICommand _opAdminHalls;
+        private ICommand _opAdminPersonal;
+        private ICommand _opAdminUser;
+        private ICommand _opAdminReservedTickets;
+        private ICommand _opAdminExit;
     
         public ICommand OpAdminFilms
         {
             get
             {
-                return opAdminFilms ?? (opAdminFilms = new RelayCommand(x => { AddFilmView av = new AddFilmView() {DataContext= new AddFilmViewModel()}; av.Show(); }));
+                return _opAdminFilms ?? (_opAdminFilms = new RelayCommand(x => { AddFilmView av = new AddFilmView() {DataContext= new AddFilmViewModel()}; av.Show(); }));
             }
         }
         public ICommand OpAdminSesions
         {
             get
             {
-                return opAdminSesions ?? (opAdminSesions = new RelayCommand(x => { AddSesionView sv = new AddSesionView() { DataContext = new AddSesionViewModel() }; sv.Show(); }));
+                return _opAdminSesions ?? (_opAdminSesions = new RelayCommand(x => { AddSesionView sv = new AddSesionView() { DataContext = new AddSesionViewModel() }; sv.Show(); }));
             }
         }
         public ICommand OpAdminTickets
         {
             get
             {
-                return opAdminTickets ?? (opAdminTickets = new RelayCommand(x => { TicketsView tv = new TicketsView() { DataContext = new TicketsViewModel() }; tv.Show();}));
+                return _opAdminTickets ?? (_opAdminTickets = new RelayCommand(x => { TicketsView tv = new TicketsView() { DataContext = new TicketsViewModel() }; tv.Show();}));
             }
         }
         public ICommand OpAdminHalls
         {
             get
             {
-                return opAdminHalls ?? (opAdminHalls = new RelayCommand(x => { AddHallView hv = new AddHallView() { DataContext = new AddHallViewModel() }; hv.Show(); }));
+                return _opAdminHalls ?? (_opAdminHalls = new RelayCommand(x => { AddHallView hv = new AddHallView() { DataContext = new AddHallViewModel() }; hv.Show(); }));
             }
         }
         public ICommand OpAdminPersonal
         {
             get
             {
-                return opAdminPersonal ?? (opAdminPersonal = new RelayCommand(x => { EditPersonalView pv = new EditPersonalView() { DataContext = new EditPersonalViewModel() }; pv.Show(); }));
+                return _opAdminPersonal ?? (_opAdminPersonal = new RelayCommand(x => { EditPersonalView pv = new EditPersonalView() { DataContext = new EditPersonalViewModel() }; pv.Show(); }));
+            }
+        }
+        public ICommand OpAdminUsers
+        {
+            get
+            {
+                return _opAdminUser ?? (_opAdminUser = new RelayCommand(x => { EditUsersView pv = new EditUsersView() { DataContext = new EditUsersViewModel() }; pv.Show(); }));
             }
         }
         //public ICommand OpAdminExit
