@@ -62,13 +62,11 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
 
         public void UpdateEmployeePhoto()
         {
-            string ImageUri = String.Empty;
             if (SelectedEmployee != null)
             {
                 DirectoryInfo dir = new DirectoryInfo(".");
                 EmployeePhoto = $"{dir.FullName}\\{SelectedEmployee.CinemaStaffPhoto}";
             }
-
         }
         public ObservableCollection<CinemaStaff> SortedEmployeeList
         {
@@ -205,7 +203,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                             }
                             else
                             {
-                                MessageBox.Show("Please choose Employee");
+                                MessageBox.Show("Please choose User");
                             }
                         }
                         catch (Exception ex)

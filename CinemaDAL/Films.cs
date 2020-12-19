@@ -21,7 +21,7 @@ namespace CinemaDAL
         [StringLength(64)]
         public string FilmName { get; set; }
 
-        public int FilmGenre { get; set; }
+        public int? FilmGenre { get; set; }
 
         [Required]
         public string FilmActors { get; set; }

@@ -59,7 +59,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <GroupBox Header="Poster" Grid.RowSpan="2">
-                    <Image Source="{Binding SelectedFilm.FilmImageUri}" HorizontalAlignment="Left" 
+                    <Image Source="{Binding FilmPhoto}" HorizontalAlignment="Left" 
                          Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Bottom"/>
                 </GroupBox>
                 <GroupBox Grid.RowSpan="2" Grid.Column="2">
@@ -97,24 +97,37 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <GroupBox Grid.Row="0" Grid.Column="0" Header="Seasion Start Date">
+                <GroupBox Grid.Row="0" Grid.Column="0" Header="Film Name">
+                    <TextBox Background="Honeydew"  Text="{Binding SelectedFilm.FilmName}"/>
+                </GroupBox>
+                <GroupBox Grid.Row="0" Grid.Column="1" Header="Seasion Start Date">
                     <DatePicker SelectedDate="{Binding SelectedFilm.FilmStartDate}"/>
                 </GroupBox>
-                <GroupBox Grid.Row="0" Grid.Column="1" Header="Seasion End Date">
+                <GroupBox Grid.Row="0" Grid.Column="2" Header="Seasion End Date">
                     <DatePicker SelectedDate="{Binding SelectedFilm.FilmEndDate}"/>
                 </GroupBox>
                 <GroupBox Grid.Row="1" Grid.Column="0" Header="Genre">
-                    <ComboBox  ItemsSource="{Binding GenreList}" SelectedItem="{Binding SelectedFilm.Genre, Mode=TwoWay}">
+                    <ComboBox  ItemsSource="{Binding GenreList}" SelectedItem="{Binding SelectedFilm.Genre, Mode=TwoWay}" Height="29" Margin="0,0,-0.333,0" VerticalAlignment="Top">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding GenreTitle}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-
                 </GroupBox>
-                <GroupBox Grid.Row="1" Grid.Column="1" Header="Duration">
+                <GroupBox Grid.Row="1" Grid.Column="1" Header="Genre List">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Background="Azure" Content="Update" Margin="3,3,3,3" Command="{Binding UpdateGenreList}"/>
+                        <Button Grid.Column="1" Background="Azure" Content="Edit" Margin="3,3,3,3" Command="{Binding OpGenreList}"/>
+                    </Grid>     
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.Column="2" Header="Duration">
                     <TextBox Background="Honeydew"  Text="{Binding SelectedFilm.FilmDuration}"/>
                 </GroupBox>
             </Grid>

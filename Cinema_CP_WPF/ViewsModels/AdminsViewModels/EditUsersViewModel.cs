@@ -1,10 +1,12 @@
 ﻿using CinemaDAL;
+using Microsoft.Win32;
 using MVVMHelper.Commands;
 using MVVMHelper.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         ObservableCollection<Ticket> _ticketList;
         CinemaUser _selectedUser;
         CinemaContext _cinemaContext;
+        string _userPhoto;
 
         public EditUsersViewModel()
         {
@@ -35,6 +38,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         ICommand _addUser;
         ICommand _deleteUser;
         ICommand _saveChange;
+        ICommand _addPhotoUser;
 
 
         void SortList()
@@ -86,8 +90,27 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             set
             {
                 _selectedUser = value;
+                UpdateUserPhoto();
                 RaisePropertyChanged();
             }
+        }
+        public string UserPhoto
+        {
+            get { return _userPhoto; }
+            set
+            {
+                _userPhoto = value;
+                RaisePropertyChanged();
+            }
+        }
+        public void UpdateUserPhoto()
+        {
+            if (SelectedUser != null)
+            {
+                DirectoryInfo dir = new DirectoryInfo(".");
+                UserPhoto = $"{dir.FullName}\\{SelectedUser.CinemaUserPhoto}";
+            }
+
         }
 
         public ICommand AddUser
@@ -117,7 +140,43 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                ));
             }
         }
+        public ICommand AddPhotoUser
+        {
+            get
+            {
+                return _addPhotoUser ?? (_addPhotoUser = new RelayCommand(
+                    x =>
+                    {
+                        try
+                        {
+                            if (SelectedUser != null)
+                            {
+                                OpenFileDialog fileDialog = new OpenFileDialog();
+                                fileDialog.ShowDialog();
+                                DirectoryInfo dirInfo = new DirectoryInfo("UsersPhoto");
+                                if (!dirInfo.Exists)
+                                {
+                                    dirInfo.Create();
+                                }
+                                string destfilename = $"UsersPhoto\\{SelectedUser.CinemaUserId}{SelectedUser.CinemaUserLogin}{fileDialog.SafeFileName}";
+                                File.Copy(fileDialog.FileName, destfilename, true);
+                                SelectedUser.CinemaUserPhoto = destfilename;
+                                UpdateUserPhoto();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please choose Employee");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"{ex.Message}");
+                        }
+                    }
 
+                    ));
+            }
+        }
         public ICommand DeleteUser
         {
             get
@@ -160,5 +219,6 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                ));
             }
         }
+
     }
 }

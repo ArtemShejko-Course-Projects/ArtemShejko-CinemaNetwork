@@ -59,9 +59,8 @@ namespace CinemaDAL
 
             modelBuilder.Entity<Genre>()
                 .HasMany(e => e.Films)
-                .WithRequired(e => e.Genre)
-                .HasForeignKey(e => e.FilmGenre)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.Genre)
+                .HasForeignKey(e => e.FilmGenre);
 
             modelBuilder.Entity<Halls>()
                 .HasMany(e => e.FilmSessions)

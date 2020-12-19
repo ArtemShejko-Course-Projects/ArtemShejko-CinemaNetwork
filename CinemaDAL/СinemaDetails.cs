@@ -30,6 +30,9 @@ namespace CinemaDAL
 
         public int СinemaDetailsCity { get; set; }
 
+        [StringLength(2048)]
+        public string СinemaDetailsPicture { get; set; }
+
         public virtual City City { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

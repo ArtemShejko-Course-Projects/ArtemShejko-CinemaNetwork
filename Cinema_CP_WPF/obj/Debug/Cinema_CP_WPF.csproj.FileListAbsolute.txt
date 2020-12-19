@@ -88,3 +88,9 @@ C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\bin\De
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\GenreView.g.cs
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\GenreView.baml
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\CinemaListView.g.cs
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\CityView.g.cs
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\CinemaListView.baml
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\CityView.baml

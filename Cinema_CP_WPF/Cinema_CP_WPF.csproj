@@ -91,8 +91,11 @@
     <Compile Include="ViewsModels\AdminsViewModels\AddHallViewModel.cs" />
     <Compile Include="ViewsModels\AdminsViewModels\AddSesionViewModel.cs" />
     <Compile Include="ViewsModels\AdminsViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\CinemaListViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\CityViewModel.cs" />
     <Compile Include="ViewsModels\AdminsViewModels\EditPersonalViewModel.cs" />
     <Compile Include="ViewsModels\AdminsViewModels\EditUsersViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\GenreViewModel.cs" />
     <Compile Include="ViewsModels\AdminsViewModels\TicketsViewModel.cs" />
     <Compile Include="ViewsModels\MainViewModel.cs" />
     <Compile Include="ViewsModels\UserViewModel.cs" />
@@ -109,11 +112,20 @@
     <Compile Include="Views\AdminViews\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminViews\CinemaListView.xaml.cs">
+      <DependentUpon>CinemaListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\CityView.xaml.cs">
+      <DependentUpon>CityView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminViews\EditPersonalView.xaml.cs">
       <DependentUpon>EditPersonalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminViews\EditUsersView.xaml.cs">
       <DependentUpon>EditUsersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\GenreView.xaml.cs">
+      <DependentUpon>GenreView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminViews\TicketsView.xaml.cs">
       <DependentUpon>TicketsView.xaml</DependentUpon>
@@ -175,11 +187,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AdminViews\CinemaListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\CityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdminViews\EditPersonalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdminViews\EditUsersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\GenreView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

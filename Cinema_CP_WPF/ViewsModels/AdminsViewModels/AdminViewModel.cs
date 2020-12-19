@@ -19,7 +19,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         private ICommand _opAdminHalls;
         private ICommand _opAdminPersonal;
         private ICommand _opAdminUser;
-        private ICommand _opAdminReservedTickets;
+        private ICommand _opAdminCinema;
         private ICommand _opAdminExit;
     
         public ICommand OpAdminFilms
@@ -62,6 +62,14 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             get
             {
                 return _opAdminUser ?? (_opAdminUser = new RelayCommand(x => { EditUsersView pv = new EditUsersView() { DataContext = new EditUsersViewModel() }; pv.Show(); }));
+            }
+        }
+
+        public ICommand OpAdminCinemaList
+        {
+            get
+            {
+                return _opAdminCinema ?? (_opAdminCinema = new RelayCommand(x => { CinemaListView cdv = new CinemaListView() { DataContext = new CinemaListViewModel() }; cdv.Show(); }));
             }
         }
         //public ICommand OpAdminExit

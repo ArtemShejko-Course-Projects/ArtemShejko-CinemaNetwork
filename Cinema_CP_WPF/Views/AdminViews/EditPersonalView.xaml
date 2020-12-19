@@ -70,7 +70,7 @@
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="5" Text="{Binding SelectedEmployee.CinemaStaffRole}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="6" Text="Salary" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="6" Text="{Binding SelectedEmployee.CinemaStaffSalary}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
-                <TextBlock Grid.Column="0" Grid.Row="7" Text="Post" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Post*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="7" Text="{Binding SelectedEmployee.CinemaStaffPost}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="8" Text="Date Start Work" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <DatePicker Grid.Column="1" Grid.Row="8" SelectedDate="{Binding SelectedEmployee.CinemaStaffDateStartWork}" Margin="1,1,1,1" VerticalAlignment="Center"></DatePicker>

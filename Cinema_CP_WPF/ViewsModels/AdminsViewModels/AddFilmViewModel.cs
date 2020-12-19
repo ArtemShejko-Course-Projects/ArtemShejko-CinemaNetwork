@@ -1,4 +1,5 @@
-﻿using CinemaDAL;
+﻿using Cinema_CP_WPF.Views.AdminViews;
+using CinemaDAL;
 using Microsoft.Win32;
 using MVVMHelper.Commands;
 using MVVMHelper.ViewModels;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,16 +24,17 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         ObservableCollection<Genre> _Genre;
         ObservableCollection<FilmSessions> _filmSesions;
         ObservableCollection<Films> _SortedFilms;
-
-
+        Films _selectedFilm;
+        string _filmPhoto;
 
         ICommand _addImage;
         ICommand _saveChanges;
         ICommand _addNewFilm;
         ICommand _deleteFilm;
+        ICommand _opGenreList;
+        ICommand _updateGenreList;
 
 
-        Films _selectedFilm;
         public AddFilmViewModel()
         {
             _context = new CinemaContext();
@@ -52,6 +55,8 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             set
             {
                 _selectedFilm = value;
+                GenreList = _context.Genre.Local;
+                UpdateFilmPhoto();
                 RaisePropertyChanged();
             }
 
@@ -67,9 +72,10 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             foreach (var Film in tmpfilms)
             {
                 SortedFilmsListFVM.Add(Film);
-            }        
+            }
         }
-        public ObservableCollection<Films> FilmsListFVM {
+        public ObservableCollection<Films> FilmsListFVM
+        {
             get
             {
                 return _Films;
@@ -106,8 +112,6 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                 RaisePropertyChanged();
             }
         }
-
-
         public ObservableCollection<FilmSessions> FilmSesionsList
         {
             get
@@ -120,6 +124,25 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                 RaisePropertyChanged();
             }
         }
+
+        public string FilmPhoto
+        {
+            get { return _filmPhoto; }
+            set
+            {
+                _filmPhoto = value;
+                RaisePropertyChanged();
+            }
+        }
+        public void UpdateFilmPhoto()
+        {
+            if (SelectedFilm != null)
+            {
+                DirectoryInfo dir = new DirectoryInfo(".");
+                FilmPhoto = $"{dir.FullName}\\{SelectedFilm.FilmImageUri}";
+            }
+
+        }
         public ICommand AddImage
         {
             get
@@ -129,10 +152,24 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     {
                         try
                         {
-                            OpenFileDialog fileDialog = new OpenFileDialog();
-                            fileDialog.ShowDialog();
-                            SelectedFilm.FilmImageUri = fileDialog.FileName;
-                            SortFilms();
+                            if (SelectedFilm != null)
+                            {
+                                OpenFileDialog fileDialog = new OpenFileDialog();
+                                fileDialog.ShowDialog();
+                                DirectoryInfo dirInfo = new DirectoryInfo("FilmsPhoto");
+                                if (!dirInfo.Exists)
+                                {
+                                    dirInfo.Create();
+                                }
+                                string destfilename = $"FilmsPhoto\\{SelectedFilm.FilmId}{SelectedFilm.FilmName}{fileDialog.SafeFileName}";
+                                File.Copy(fileDialog.FileName, destfilename, true);
+                                SelectedFilm.FilmImageUri = destfilename;
+                                UpdateFilmPhoto();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please choose Film");
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -143,7 +180,6 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     ));
             }
         }
-
         public ICommand AddNewFilm
         {
             get
@@ -176,7 +212,6 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     ));
             }
         }
-
         public ICommand DeleteFilm
         {
             get
@@ -187,15 +222,15 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                         try
                         {
                             FilmSessions filmSesionstmp = FilmSesionsList.Where(f => f.FilmId == SelectedFilm.FilmId).FirstOrDefault();
-                            if(filmSesionstmp!=null)
+                            if (filmSesionstmp != null)
                             {
                                 MessageBox.Show("Can't delete Film. Delete all sesions with this film before delete film");
                             }
-                            else 
+                            else
                             {
                                 //int filmId = SelectedFilm.FilmId;
                                 //_context.Database.ExecuteSqlCommand($"delete from Films where FilmId={filmId}");
-                                 FilmsListFVM.Remove(SelectedFilm);
+                                FilmsListFVM.Remove(SelectedFilm);
                                 //_context.Films.Include(g => g.Genre).Load();
                                 //FilmsListFVM = _context.Films.Local;
                                 SelectedFilm = FilmsListFVM.FirstOrDefault();
@@ -237,6 +272,35 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     ));
             }
         }
-
+        public ICommand OpGenreList
+        {
+            get
+            {
+                return _opGenreList ?? (_opGenreList = new RelayCommand(
+                       x => { GenreView gv = new GenreView() { DataContext = new GenreViewModel() }; gv.Show(); }
+                       ));
+            }
+        }
+        public ICommand UpdateGenreList
+        {
+            get
+            {
+                return _updateGenreList ?? (_updateGenreList = new RelayCommand(x =>
+                {
+                    try
+                    {
+                        _context.Genre.Load();
+                        GenreList = _context.Genre.Local;
+                        SelectedFilm = SortedFilmsListFVM.FirstOrDefault();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                    ));
+            }
+        }
     }
 }
+
