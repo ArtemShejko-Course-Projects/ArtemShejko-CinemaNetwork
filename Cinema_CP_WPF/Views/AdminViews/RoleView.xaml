@@ -11,7 +11,7 @@
             <RowDefinition/>
             <RowDefinition Height="0.10*"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="City List" Grid.Row="0">
+        <GroupBox Header="Role List" Grid.Row="0">
             <ListBox Background="MintCream" ItemsSource="{Binding SortedRoleList}" SelectedItem="{Binding SelectedRole}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>

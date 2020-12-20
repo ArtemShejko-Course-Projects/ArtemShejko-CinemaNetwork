@@ -19,7 +19,7 @@ namespace Cinema_CP_WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var view = new AdminView() { DataContext = new AdminViewModel() };
+            var view = new LoginView() { DataContext = new LoginViewModel() };
             MainWindow = view;
             view.Show();
         }
