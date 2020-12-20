@@ -20,6 +20,7 @@ namespace CinemaDAL
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<Halls> Halls { get; set; }
         public virtual DbSet<Place> Place { get; set; }
+        public virtual DbSet<RoleTable> RoleTable { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<СinemaDetails> СinemaDetails { get; set; }
 
@@ -79,6 +80,18 @@ namespace CinemaDAL
             modelBuilder.Entity<Place>()
                 .HasMany(e => e.Ticket)
                 .WithRequired(e => e.Place)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<RoleTable>()
+                .HasMany(e => e.CinemaStaff)
+                .WithRequired(e => e.RoleTable)
+                .HasForeignKey(e => e.CinemaStaffRole)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<RoleTable>()
+                .HasMany(e => e.CinemaUser)
+                .WithRequired(e => e.RoleTable)
+                .HasForeignKey(e => e.CinemaUserRole)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Ticket>()

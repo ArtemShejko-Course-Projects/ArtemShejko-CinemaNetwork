@@ -104,6 +104,7 @@
     <Compile Include="ViewsModels\ChooseCityCinemaViewModel.cs" />
     <Compile Include="ViewsModels\LoginViewModel.cs" />
     <Compile Include="ViewsModels\MainViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\RoleViewModel.cs" />
     <Compile Include="ViewsModels\UserViewModel.cs" />
     <Compile Include="ViewsModels\СashierViewModel.cs" />
     <Compile Include="Views\AdminViews\AddFilmView.xaml.cs">
@@ -132,6 +133,9 @@
     </Compile>
     <Compile Include="Views\AdminViews\GenreView.xaml.cs">
       <DependentUpon>GenreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\RoleView.xaml.cs">
+      <DependentUpon>RoleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminViews\TicketsView.xaml.cs">
       <DependentUpon>TicketsView.xaml</DependentUpon>
@@ -216,6 +220,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdminViews\GenreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\RoleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

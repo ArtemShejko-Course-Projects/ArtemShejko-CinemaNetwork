@@ -43,9 +43,14 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             Filmlist= _context.Films.Local;
             Hallslist = _context.Halls.Local;
             SortedSesionList = new ObservableCollection<FilmSessions>();
-            SelectedSesion = SessionList.FirstOrDefault();
+            SelectedHall = Hallslist.FirstOrDefault();
+            SortSession();
+            SelectedSesion = SortedSesionList.FirstOrDefault();
             SelectedDate = DateTime.Now;
         }
+
+
+
         public ObservableCollection<FilmSessions> SessionList
         {
             get { return _sesionlist; }
@@ -186,7 +191,8 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                                 SessionDate =DateTime.Now,
                                 SessionPrice= 1,                                
                             };
-                            SessionList.Add(sesion);
+                            SortedSesionList.Add(sesion);
+                            SortSession();
                         }
                         catch (Exception ex)
                         {
@@ -214,7 +220,8 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                             else
                             {
                                 SessionList.Remove(SelectedSesion);
-                                SelectedSesion = SessionList.FirstOrDefault();
+                                SortSession();
+                                SelectedSesion = SortedSesionList.FirstOrDefault();
                             }
                         }
                         catch (Exception ex)
@@ -310,6 +317,26 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                     }
 
                 ));
+            }
+        }
+
+        void SortSession()
+        {
+            List<FilmSessions> SortedsesionlistTmp = SessionList.Where(h => h.HallId == SelectedHall.HallId).ToList();
+            if (SortedsesionlistTmp.Count > 0)
+            {
+                SortedSesionList.Clear();
+                foreach (var sesion in SortedsesionlistTmp)
+                {
+                    SortedSesionList.Add(sesion);
+                }
+            }
+            else
+            {
+                if (SortedSesionList != null)
+                {
+                    SortedSesionList.Clear();
+                }
             }
         }
 

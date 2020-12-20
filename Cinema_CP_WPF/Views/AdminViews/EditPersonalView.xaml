@@ -61,13 +61,19 @@
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Password*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedEmployee.CinemaStaffPass}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Name*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedEmployee.CinemaStaffrName}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedEmployee.CinemaStaffName}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Phone*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <xctk:MaskedTextBox Mask="+00(000) 000-0000" Background="Honeydew" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedEmployee.CinemaStaffPhone}" Margin="1,1,1,1" VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="0" Grid.Row="4" Text="Email*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="4" Text="{Binding SelectedEmployee.CinemaStaffEmail}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
-                <TextBlock Grid.Column="0" Grid.Row="5" Text="Role" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="5" Text="{Binding SelectedEmployee.CinemaStaffRole}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="Role*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <ComboBox Background="Honeydew" Grid.Column="1" Grid.Row="5" ItemsSource="{Binding RoleList}" SelectedItem="{Binding SelectedEmployee.RoleTable}" Margin="1,1,1,1" VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RoleTitle}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
                 <TextBlock Grid.Column="0" Grid.Row="6" Text="Salary" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="6" Text="{Binding SelectedEmployee.CinemaStaffSalary}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="7" Text="Post*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>

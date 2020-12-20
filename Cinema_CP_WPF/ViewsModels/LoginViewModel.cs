@@ -27,8 +27,8 @@ namespace Cinema_CP_WPF.ViewsModels
         {
             _context = new CinemaContext();
             Roles = new List<string>(); 
-            _context.CinemaUser.Load();
-            _context.CinemaStaff.Load();
+            _context.CinemaUser.Include(r=>r.RoleTable).Load();
+            _context.CinemaStaff.Include(r => r.RoleTable).Load();
             _users =_context.CinemaUser.Local;
             _cinemaStaff = _context.CinemaStaff.Local;
             Role = String.Empty;
@@ -59,13 +59,13 @@ namespace Cinema_CP_WPF.ViewsModels
                                 CinemaStaff tmpStuff = _cinemaStaff.Where(l => l.CinemaStaffLogin == Login).Where(p => p.CinemaStaffPass == tmpPass).FirstOrDefault();
                                 if (tmpStuff != null)
                                 {
-                                    if (tmpStuff.CinemaStaffRole == "Administrator")
+                                    if (tmpStuff.RoleTable.RoleTitle == "Administrator")
                                     {
                                         AdminView av = new AdminView() { DataContext = new AdminViewModel() }; av.Show();
                                     }
-                                    else if (tmpStuff.CinemaStaffRole == "Cashier")
+                                    else if (tmpStuff.RoleTable.RoleTitle == "Cashier")
                                     {
-                                        ChooseCityCinemaView ccv = new ChooseCityCinemaView() { DataContext = new ChooseCityCinemaViewModel(tmpStuff.CinemaStaffRole) }; ccv.Show();
+                                        ChooseCityCinemaView ccv = new ChooseCityCinemaView() { DataContext = new ChooseCityCinemaViewModel(tmpStuff.RoleTable.RoleTitle) }; ccv.Show();
                                     }
                                     else
                                     {
@@ -82,7 +82,7 @@ namespace Cinema_CP_WPF.ViewsModels
                                 CinemaUser tmpuser = _users.Where(l => l.CinemaUserLogin == Login).Where(p => p.CinemaUserPass == tmpPass).FirstOrDefault();
                                 if (tmpuser != null)
                                 {
-                                    ChooseCityCinemaView ccv = new ChooseCityCinemaView() { DataContext = new ChooseCityCinemaViewModel(tmpuser.CinemaUserRole) { ViewLogin = tmpuser.CinemaUserLogin} }; ccv.Show();
+                                    ChooseCityCinemaView ccv = new ChooseCityCinemaView() { DataContext = new ChooseCityCinemaViewModel(tmpuser.RoleTable.RoleTitle) { ViewLogin = tmpuser.CinemaUserLogin} }; ccv.Show();
                                 }
                                 else
                                 {

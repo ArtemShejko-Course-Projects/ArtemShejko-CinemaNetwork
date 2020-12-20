@@ -20,7 +20,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         private ICommand _opAdminPersonal;
         private ICommand _opAdminUser;
         private ICommand _opAdminCinema;
-        private ICommand _opAdminExit;
+        private ICommand _OpAdminRole;
     
         public ICommand OpAdminFilms
         {
@@ -70,6 +70,14 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             get
             {
                 return _opAdminCinema ?? (_opAdminCinema = new RelayCommand(x => { CinemaListView cdv = new CinemaListView() { DataContext = new CinemaListViewModel() }; cdv.Show(); }));
+            }
+        }
+
+        public ICommand OpAdminRole
+        {
+            get
+            {
+                return _OpAdminRole ?? (_OpAdminRole = new RelayCommand(x => { RoleView rv = new RoleView() { DataContext = new RoleViewModel() }; rv.Show(); }));
             }
         }
         //public ICommand OpAdminExit

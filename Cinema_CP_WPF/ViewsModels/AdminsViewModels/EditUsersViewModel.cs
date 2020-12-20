@@ -19,6 +19,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
     {
         ObservableCollection<CinemaUser> _userlist;
         ObservableCollection<CinemaUser> _sortedUserList;
+        ObservableCollection<RoleTable> _roleTable;
         ObservableCollection<Ticket> _ticketList;
         CinemaUser _selectedUser;
         CinemaContext _cinemaContext;
@@ -28,10 +29,12 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         {
             _cinemaContext = new CinemaContext();
             SortedUserList = new ObservableCollection<CinemaUser>();
-            _cinemaContext.CinemaUser.Include(t => t.Ticket).Load();
+            _cinemaContext.CinemaUser.Include(t => t.Ticket).Include(r=>r.RoleTable).Load();
             _cinemaContext.Ticket.Include(p => p.Place).Include(h=>h.Place.Halls).Include(fm=>fm.Place.FilmSessions).Include(f=>f.Place.FilmSessions.Films).Load();
+            _cinemaContext.RoleTable.Load();
             UserList = _cinemaContext.CinemaUser.Local;
             TicketList = _cinemaContext.Ticket.Local;
+            RoleList = _cinemaContext.RoleTable.Local;
             SortList();
         }
 
@@ -113,6 +116,17 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
 
         }
 
+        public ObservableCollection<RoleTable> RoleList
+        {
+            get { return _roleTable; }
+            set
+            {
+                _roleTable = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
         public ICommand AddUser
         {
             get
@@ -127,8 +141,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                         CinemaUser cuser = new CinemaUser()
                         {
                             CinemaUserLogin = TmpUserLogin,
-                            CinemaUserPass = TmpUserLogin,
-                            CinemaUserRole= "User"
+                            CinemaUserPass = TmpUserLogin,                          
                         };
                         UserList.Add(cuser);
                         SortList();

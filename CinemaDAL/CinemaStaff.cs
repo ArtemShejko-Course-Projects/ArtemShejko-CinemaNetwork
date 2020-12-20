@@ -35,8 +35,7 @@ namespace CinemaDAL
         [StringLength(64)]
         public string CinemaStaffEmail { get; set; }
 
-        [StringLength(128)]
-        public string CinemaStaffRole { get; set; }
+        public int CinemaStaffRole { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? CinemaStaffSalary { get; set; }
@@ -49,5 +48,7 @@ namespace CinemaDAL
         public DateTime? CinemaStaffDateEndWork { get; set; }
 
         public bool? CinemaStaffLogged { get; set; }
+
+        public virtual RoleTable RoleTable { get; set; }
     }
 }

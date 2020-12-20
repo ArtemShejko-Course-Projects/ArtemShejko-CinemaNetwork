@@ -19,6 +19,8 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
     {
         ObservableCollection<CinemaStaff> _employeelist;
         ObservableCollection<CinemaStaff> _sortedemployeelist;
+        ObservableCollection<RoleTable> _roleTable;
+
         CinemaStaff _selectedStuff;
         CinemaContext _cinemaContext;
         string _EmployeePhoto;
@@ -26,8 +28,10 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
         {
             _cinemaContext = new CinemaContext();
             SortedEmployeeList = new ObservableCollection<CinemaStaff>();
-            _cinemaContext.CinemaStaff.Load();
+            _cinemaContext.CinemaStaff.Include(r=>r.RoleTable).Load();
+            _cinemaContext.RoleTable.Load();
             EmployeeList = _cinemaContext.CinemaStaff.Local;
+            RoleList = _cinemaContext.RoleTable.Local;
             SortList();
         }
 
@@ -83,6 +87,16 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             set
             {
                 _employeelist = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public ObservableCollection<RoleTable> RoleList
+        {
+            get { return _roleTable; }
+            set
+            {
+                _roleTable = value;
                 RaisePropertyChanged();
             }
         }

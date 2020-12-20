@@ -34,8 +34,7 @@ namespace CinemaDAL
         [StringLength(64)]
         public string CinemaUserEmail { get; set; }
 
-        [StringLength(128)]
-        public string CinemaUserRole { get; set; }
+        public int CinemaUserRole { get; set; }
 
         public bool? CinemaUserLogged { get; set; }
 
@@ -43,6 +42,8 @@ namespace CinemaDAL
 
         [StringLength(2048)]
         public string CinemaUserPhoto { get; set; }
+
+        public virtual RoleTable RoleTable { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Ticket { get; set; }

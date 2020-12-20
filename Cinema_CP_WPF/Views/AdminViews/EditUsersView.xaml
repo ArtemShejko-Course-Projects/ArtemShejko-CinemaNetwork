@@ -63,8 +63,14 @@
                 <TextBlock Grid.Column="0" Grid.Row="4" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="4" Text="{Binding SelectedUser.CinemaUserEmail}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Role" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="5" Text="{Binding SelectedUser.CinemaUserRole}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
-                <TextBlock Grid.Column="0" Grid.Row="6" Text="Discount" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <ComboBox Background="Honeydew" Grid.Column="1" Grid.Row="5" ItemsSource="{Binding RoleList}" SelectedItem="{Binding SelectedUser.RoleTable}" Margin="1,1,1,1" VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RoleTitle}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Grid.Column="0" Grid.Row="6" Text="Discount" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="6" Text="{Binding SelectedUser.CinemaUserВiscount}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="1" Grid.Row="7" Text="* - Required Field" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <GroupBox Grid.Row="8" Grid.ColumnSpan="2" Header="Ticket List">

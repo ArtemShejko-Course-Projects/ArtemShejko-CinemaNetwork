@@ -80,6 +80,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             set
             {
                 _сinemaDetails = value;
+                UpdateCinemaPhoto();
                 RaisePropertyChanged();
             }
         }

@@ -78,6 +78,7 @@
     <Compile Include="Halls.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleTable.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="СinemaDetails.cs" />
   </ItemGroup>
