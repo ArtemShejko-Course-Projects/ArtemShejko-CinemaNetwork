@@ -23,5 +23,6 @@ namespace Cinema_CP_WPF.Views
         {
             InitializeComponent();
         }
+
     }
 }

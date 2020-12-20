@@ -25,7 +25,7 @@ namespace CinemaDAL
 
         [Required]
         [StringLength(64)]
-        public string CinemaStaffrName { get; set; }
+        public string CinemaStaffName { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -35,11 +35,20 @@ namespace CinemaDAL
         [StringLength(64)]
         public string CinemaStaffEmail { get; set; }
 
+        public int CinemaStaffRole { get; set; }
+
         [Column(TypeName = "money")]
-        public decimal CinemaStaffSalary { get; set; }
+        public decimal? CinemaStaffSalary { get; set; }
+
+        [StringLength(2048)]
+        public string CinemaStaffPhoto { get; set; }
 
         public DateTime? CinemaStaffDateStartWork { get; set; }
 
         public DateTime? CinemaStaffDateEndWork { get; set; }
+
+        public bool? CinemaStaffLogged { get; set; }
+
+        public virtual RoleTable RoleTable { get; set; }
     }
 }

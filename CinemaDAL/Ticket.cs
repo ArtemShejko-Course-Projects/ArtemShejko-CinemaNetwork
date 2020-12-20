@@ -11,14 +11,14 @@ namespace CinemaDAL
     {
         public int TicketId { get; set; }
 
-        public int FilmSessionsId { get; set; }
-
         public int PlaceId { get; set; }
+
+        public int? CinemaUserId { get; set; }
 
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
-        public virtual FilmSessions FilmSessions { get; set; }
+        public virtual CinemaUser CinemaUser { get; set; }
 
         public virtual Place Place { get; set; }
     }

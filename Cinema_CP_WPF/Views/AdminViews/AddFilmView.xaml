@@ -1,0 +1,140 @@
+﻿<Window x:Class="Cinema_CP_WPF.Views.AdminViews.AddFilmView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews"
+        xmlns:vm="clr-namespace:Cinema_CP_WPF.ViewsModels.AdminsViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:AddFilmViewModel}"
+        Title="Add Film" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox  Grid.Row="0" Grid.Column="0" Header="Film List" Margin="1,1,1,1">
+            <Grid>
+                <ListBox Background="MintCream" ItemsSource="{Binding SortedFilmsListFVM}" SelectedItem="{Binding SelectedFilm}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="5,1,5,1" Text="{Binding FilmName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="1" Margin="5,1,5,1" Text="{Binding Genre.GenreTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="2" Margin="5,1,5,1" Text="{Binding FilmDuration,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="75" MaxWidth="75"/>
+                                <TextBlock Grid.Column="3" Margin="5,1,5,1" Text="{Binding FilmStartDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Grid.Column="5" Margin="5,1,5,1" Text="{Binding FilmEndDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Grid.Column="6" Margin="5,1,5,1" Text="{Binding FilmImageUri,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            <!--<DataGrid ItemsSource="{Binding Films}" SelectedItem="{Binding SelectedFilm}"></DataGrid>-->
+        </GroupBox>
+        <GroupBox Grid.Row="0" Grid.Column="2" Header="Film Description" Margin="1,1,1,1">
+            <TextBox Background="Honeydew" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding SelectedFilm.FilmDescription, Mode=TwoWay}"></TextBox>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0" Margin="1,1,1,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <GroupBox Header="Poster" Grid.RowSpan="2">
+                    <Image Source="{Binding FilmPhoto}" HorizontalAlignment="Left" 
+                         Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Bottom"/>
+                </GroupBox>
+                <GroupBox Grid.RowSpan="2" Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Content="Add Image" Command="{Binding AddImage}" Margin="5,5,5,5" Background="Azure"/>
+                        <Button Grid.Row="1" Content="Add Film" Command="{Binding AddNewFilm}" Margin="5,5,5,5" Background="Azure"/>
+                        <Button Grid.Row="2" Content="Delete Film" Command="{Binding DeleteFilm}" Margin="5,5,5,5" Background="Azure"/>
+                        <Button Grid.Row="3" Content="Save Changes" Command="{Binding SaveChanges}" Margin="5,5,5,5" Background="Azure"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.ColumnSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Row="0" Grid.Column="0" Header="Film Name">
+                    <TextBox Background="Honeydew"  Text="{Binding SelectedFilm.FilmName}"/>
+                </GroupBox>
+                <GroupBox Grid.Row="0" Grid.Column="1" Header="Seasion Start Date">
+                    <DatePicker SelectedDate="{Binding SelectedFilm.FilmStartDate}"/>
+                </GroupBox>
+                <GroupBox Grid.Row="0" Grid.Column="2" Header="Seasion End Date">
+                    <DatePicker SelectedDate="{Binding SelectedFilm.FilmEndDate}"/>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.Column="0" Header="Genre">
+                    <ComboBox  ItemsSource="{Binding GenreList}" SelectedItem="{Binding SelectedFilm.Genre, Mode=TwoWay}" Height="29" Margin="0,0,-0.333,0" VerticalAlignment="Top">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding GenreTitle}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.Column="1" Header="Genre List">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Background="Azure" Content="Update" Margin="3,3,3,3" Command="{Binding UpdateGenreList}"/>
+                        <Button Grid.Column="1" Background="Azure" Content="Edit" Margin="3,3,3,3" Command="{Binding OpGenreList}"/>
+                    </Grid>     
+                </GroupBox>
+                <GroupBox Grid.Row="1" Grid.Column="2" Header="Duration">
+                    <TextBox Background="Honeydew"  Text="{Binding SelectedFilm.FilmDuration}"/>
+                </GroupBox>
+            </Grid>
+            <GroupBox Grid.Row="1" Grid.ColumnSpan="4" Header="Actors" Margin="1,1,1,1">
+                <TextBox Background="Honeydew" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Text="{Binding SelectedFilm.FilmActors, Mode=TwoWay}"></TextBox>
+            </GroupBox>
+        </Grid>
+
+    </Grid>
+</Window>

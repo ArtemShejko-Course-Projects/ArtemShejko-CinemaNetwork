@@ -1,0 +1,111 @@
+﻿<Window x:Class="Cinema_CP_WPF.Views.AdminViews.EditPersonalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Employee" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Employee List" Grid.Column="0" Grid.Row="0" Margin="1,1,1,1" Padding="1,1,1,1">
+            <ListBox Background="MintCream" ItemsSource="{Binding SortedEmployeeList}" SelectedItem="{Binding SelectedEmployee}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding CinemaStaffLogin}" Margin="1,1,1,1" Padding="1,1,1,1"/>
+                            <TextBlock Grid.Column="1" Text="{Binding CinemaStaffrName}" Margin="1,1,1,1" Padding="1,1,1,1"/>
+                            <TextBlock Grid.Column="2" Text="{Binding CinemaStaffPost}" Margin="1,1,1,1" Padding="1,1,1,1"/>
+                            <TextBlock Grid.Column="4" Text="{Binding CinemaStaffPhone}" Margin="1,1,1,1" Padding="1,1,1,1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+        <GroupBox Header="Employee Data" Grid.Column="1" Grid.RowSpan="2">
+            <Grid Background="Azure">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Login*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="0" Text="{Binding SelectedEmployee.CinemaStaffLogin}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Password*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedEmployee.CinemaStaffPass}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Name*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedEmployee.CinemaStaffName}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Phone*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <xctk:MaskedTextBox Mask="+00(000) 000-0000" Background="Honeydew" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedEmployee.CinemaStaffPhone}" Margin="1,1,1,1" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Email*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="4" Text="{Binding SelectedEmployee.CinemaStaffEmail}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="Role*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <ComboBox Background="Honeydew" Grid.Column="1" Grid.Row="5" ItemsSource="{Binding RoleList}" SelectedItem="{Binding SelectedEmployee.RoleTable}" Margin="1,1,1,1" VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RoleTitle}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="Salary" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="6" Text="{Binding SelectedEmployee.CinemaStaffSalary}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Post*" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="7" Text="{Binding SelectedEmployee.CinemaStaffPost}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="Date Start Work" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <DatePicker Grid.Column="1" Grid.Row="8" SelectedDate="{Binding SelectedEmployee.CinemaStaffDateStartWork}" Margin="1,1,1,1" VerticalAlignment="Center"></DatePicker>
+                <TextBlock Grid.Column="0" Grid.Row="9" Text="Date End Work" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <DatePicker Grid.Column="1" Grid.Row="9" SelectedDate="{Binding SelectedEmployee.CinemaStaffDateEndWork}" Margin="1,1,1,1" VerticalAlignment="Center"></DatePicker>
+                <TextBlock Grid.Column="1" Grid.Row="10" Text="* - Required Field" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>                
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Column="0" Grid.RowSpan="4" Header="Employee Photo">
+                    <Image Source="{Binding EmployeePhoto}" HorizontalAlignment="Left" 
+                         Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Bottom"/>
+                </GroupBox>
+                <Button Grid.Column="1" Grid.Row="0" Background="LightSteelBlue" Content="Add Photo" Margin="5,5,5,5" Command="{Binding AddPhotoEmp}"></Button>
+                <Button Grid.Column="1" Grid.Row="1" Background="LightSteelBlue" Content="Add Employee" Margin="5,5,5,5" Command="{Binding AddEmployee}"></Button>
+                <Button Grid.Column="1" Grid.Row="2" Background="LightSteelBlue" Content="Delete Employee" Margin="5,5,5,5" Command="{Binding DeleteEmployee}"></Button>
+                <Button Grid.Column="1" Grid.Row="3" Background="LightSteelBlue" Content="Save Changes" Margin="5,5,5,5" Command="{Binding SaveChanges}"></Button>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

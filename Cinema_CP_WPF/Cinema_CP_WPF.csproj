@@ -37,6 +37,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>movie-icon-ico-9.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -62,6 +66,21 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -72,10 +91,60 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewsModels\AdminsViewModels\AddFilmViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\AddHallViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\AddSesionViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\CinemaListViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\CityViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\EditPersonalViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\EditUsersViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\GenreViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\TicketsViewModel.cs" />
+    <Compile Include="ViewsModels\ChooseCityCinemaViewModel.cs" />
+    <Compile Include="ViewsModels\LoginViewModel.cs" />
     <Compile Include="ViewsModels\MainViewModel.cs" />
+    <Compile Include="ViewsModels\AdminsViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewsModels\UserViewModel.cs" />
     <Compile Include="ViewsModels\СashierViewModel.cs" />
-    <Compile Include="Views\AdminView.xaml.cs">
+    <Compile Include="Views\AdminViews\AddFilmView.xaml.cs">
+      <DependentUpon>AddFilmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AddHallView.xaml.cs">
+      <DependentUpon>AddHallView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AddSesionView.xaml.cs">
+      <DependentUpon>AddSesionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\CinemaListView.xaml.cs">
+      <DependentUpon>CinemaListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\CityView.xaml.cs">
+      <DependentUpon>CityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\EditPersonalView.xaml.cs">
+      <DependentUpon>EditPersonalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\EditUsersView.xaml.cs">
+      <DependentUpon>EditUsersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\GenreView.xaml.cs">
+      <DependentUpon>GenreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\RoleView.xaml.cs">
+      <DependentUpon>RoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\TicketsView.xaml.cs">
+      <DependentUpon>TicketsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChooseCityCinemaView.xaml.cs">
+      <DependentUpon>ChooseCityCinemaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -118,7 +187,55 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\AdminView.xaml">
+    <Page Include="Views\AdminViews\AddFilmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AddHallView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AddSesionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\CinemaListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\CityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\EditPersonalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\EditUsersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\GenreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\RoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\TicketsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChooseCityCinemaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +257,12 @@
       <Project>{5f243afe-6be0-4c9f-b712-abc50719078b}</Project>
       <Name>CinemaDAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Chromatix-Aerial-Movie.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="movie-icon-ico-9.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

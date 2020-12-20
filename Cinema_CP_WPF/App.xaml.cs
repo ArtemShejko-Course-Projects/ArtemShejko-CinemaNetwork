@@ -1,5 +1,6 @@
 ﻿using Cinema_CP_WPF.Views;
 using Cinema_CP_WPF.ViewsModels;
+using Cinema_CP_WPF.ViewsModels.AdminsViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,7 +19,7 @@ namespace Cinema_CP_WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var view = new MainView() { DataContext = new MainViewModel() };
+            var view = new LoginView() { DataContext = new LoginViewModel() };
             MainWindow = view;
             view.Show();
         }
