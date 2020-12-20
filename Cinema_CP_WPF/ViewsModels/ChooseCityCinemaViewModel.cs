@@ -1,4 +1,5 @@
 ﻿using Cinema_CP_WPF.Views;
+using Cinema_CP_WPF.ViewsModels.AdminsViewModels;
 using CinemaDAL;
 using MVVMHelper.Commands;
 using MVVMHelper.ViewModels;
@@ -23,6 +24,8 @@ namespace Cinema_CP_WPF.ViewsModels
         ObservableCollection<СinemaDetails> _sortedcdlist;
         CinemaContext _context;
         public string ViewRole { get; set; }
+        public string ViewLogin { get; set; }
+
 
         ICommand _openView;
         public ChooseCityCinemaViewModel()
@@ -117,7 +120,15 @@ namespace Cinema_CP_WPF.ViewsModels
                     {
                         if (ViewRole == "Cashier")
                         {
-                            СashierView ccv = new СashierView() { DataContext = new СashierViewModel(SelectedCinema.СinemaDetailsId)}; ccv.Show();
+                            СashierView ccv = new СashierView() { DataContext = new СashierViewModel(SelectedCinema.СinemaDetailsId) }; ccv.Show();
+                        }
+                        else if (ViewRole == "Administrator")
+                        {
+                            AdminView av = new AdminView() { DataContext = new AdminViewModel() }; av.Show();
+                        }
+                        else if (ViewRole == "User")
+                        {
+                            UserView uv = new UserView() { DataContext = new UserViewModel(SelectedCinema.СinemaDetailsId) { tbReserveName = ViewLogin } }; uv.Show();
                         }
                     }
                     catch (Exception ex)

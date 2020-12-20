@@ -53,9 +53,9 @@ namespace Cinema_CP_WPF.ViewsModels
                     {
                         try
                         {
+                            string tmpPass = new System.Net.NetworkCredential(string.Empty, SecurePassword).Password; ;
                             if (Role == "Employee")
                             {
-                                string tmpPass = new System.Net.NetworkCredential(string.Empty, SecurePassword).Password; ;
                                 CinemaStaff tmpStuff = _cinemaStaff.Where(l => l.CinemaStaffLogin == Login).Where(p => p.CinemaStaffPass == tmpPass).FirstOrDefault();
                                 if (tmpStuff != null)
                                 {
@@ -79,7 +79,15 @@ namespace Cinema_CP_WPF.ViewsModels
                             }
                             else if (Role == "User")
                             {
-
+                                CinemaUser tmpuser = _users.Where(l => l.CinemaUserLogin == Login).Where(p => p.CinemaUserPass == tmpPass).FirstOrDefault();
+                                if (tmpuser != null)
+                                {
+                                    ChooseCityCinemaView ccv = new ChooseCityCinemaView() { DataContext = new ChooseCityCinemaViewModel(tmpuser.CinemaUserRole) { ViewLogin = tmpuser.CinemaUserLogin} }; ccv.Show();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Wrong Login or Password. Login and password be case sensitive");
+                                }
                             }
                             else if (Role.Length==0) 
                             {

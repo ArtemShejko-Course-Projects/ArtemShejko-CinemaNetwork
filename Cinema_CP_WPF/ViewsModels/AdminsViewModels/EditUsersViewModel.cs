@@ -127,7 +127,8 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                         CinemaUser cuser = new CinemaUser()
                         {
                             CinemaUserLogin = TmpUserLogin,
-                            CinemaUserPass = TmpUserLogin
+                            CinemaUserPass = TmpUserLogin,
+                            CinemaUserRole= "User"
                         };
                         UserList.Add(cuser);
                         SortList();
