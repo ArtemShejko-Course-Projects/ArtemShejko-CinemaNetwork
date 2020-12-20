@@ -94,3 +94,7 @@ C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\De
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\CityView.g.cs
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\CinemaListView.baml
 C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\AdminViews\CityView.baml
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\LoginView.g.cs
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\LoginView.baml
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\ChooseCityCinemaView.g.cs
+C:\Users\admin\source\repos\Comp2\ArtemShejko-CinemaNetwork\Cinema_CP_WPF\obj\Debug\Views\ChooseCityCinemaView.baml

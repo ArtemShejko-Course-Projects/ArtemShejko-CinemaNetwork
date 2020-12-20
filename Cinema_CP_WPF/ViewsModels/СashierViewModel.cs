@@ -22,6 +22,8 @@ namespace Cinema_CP_WPF.ViewsModels
         ObservableCollection<FilmSessions> _sortedsesionlist;
         ObservableCollection<Ticket> _tiketlist;
         ObservableCollection<Place> _placeList;
+        ObservableCollection<Halls> _hallsList;
+        ObservableCollection<Halls> _sortedhallsList;
         CinemaContext _context;
         Halls _SelectedHalls;
         FilmSessions _SelectedSesions;
@@ -39,23 +41,58 @@ namespace Cinema_CP_WPF.ViewsModels
         public int Row { get; set; }
         public string tbReserveName { get; set; }
 
+        public int CinemaId;
         
         public СashierViewModel()
         {
             _context = new CinemaContext();
-            _context.Halls.Include(f => f.FilmSessions).Load();
+            Hallslist = new ObservableCollection<Halls>();
+            PlaceGridView = new Grid();
+            Sortedsesionlist = new ObservableCollection<FilmSessions>();
+            _context.Halls.Include(f => f.FilmSessions).Include(cn=>cn.СinemaDetails).Load();
             _context.FilmSessions.Include(f => f.Films).Load();
             _context.Place.Include(t => t.Ticket).Include(h => h.Halls).Load();
-            _context.Ticket.Load();
-            PlaceGridView = new Grid();
-            Hallslist = _context.Halls.Local;
+            _context.Ticket.Load();  
             Sesionlist = _context.FilmSessions.Local;
             PlaceList = _context.Place.Local;
             Tiketlist = _context.Ticket.Local;
+            Hallslist = _context.Halls.Local;
+            CinemaHallsList();
             SelectedHall = Hallslist.FirstOrDefault();
-            Sortedsesionlist = new ObservableCollection<FilmSessions>();
             SelectedDate = DateTime.Now;
             tbReserveName = String.Empty;
+        }
+
+        public СashierViewModel(int CinId)
+        {
+            CinemaId = CinId;
+            _context = new CinemaContext();
+            Sortedsesionlist = new ObservableCollection<FilmSessions>();
+            Hallslist = new ObservableCollection<Halls>();
+            PlaceGridView = new Grid();
+            SelectedDate = DateTime.Now;
+            _context.Halls.Include(f => f.FilmSessions).Include(cn => cn.СinemaDetails).Load();
+            _context.FilmSessions.Include(f => f.Films).Load();
+            _context.Place.Include(t => t.Ticket).Include(h => h.Halls).Load();
+            _context.Ticket.Load();
+            Sesionlist = _context.FilmSessions.Local;
+            PlaceList = _context.Place.Local;
+            Tiketlist = _context.Ticket.Local;
+            CinemaHallsList();
+            SelectedHall = Hallslist.FirstOrDefault();
+            tbReserveName = String.Empty;
+        }
+        void CinemaHallsList()
+        {
+            var tmp = _context.Halls.Local.Where(cn => cn.СinemaDetails.СinemaDetailsId == CinemaId);
+            if (tmp != null)
+            {
+                Hallslist.Clear();
+                foreach (Halls halls in tmp)
+                {
+                    Hallslist.Add(halls);
+                }
+            }            
         }
 
         void UpdatePlacesFromSQl()
@@ -68,21 +105,29 @@ namespace Cinema_CP_WPF.ViewsModels
         {
             if (SelectedSesion != null)
             {
-                if (Place > 0 || Row > 0)
+                if (SelectedSesion.SessionDate>DateTime.Now)
                 {
-                    if (Row <= SelectedHall.HallRow && Place <= SelectedHall.HallColumn)
+                    if (Place > 0 || Row > 0)
                     {
-                        return true;
+                        if (Row <= SelectedHall.HallRow && Place <= SelectedHall.HallColumn)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error Row or Place");
+                            return false;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Error Row or Place");
+                        MessageBox.Show("Row or Place cant be 0");
                         return false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Row or Place cant be 0");
+                    MessageBox.Show("Session has ended, please choose another");
                     return false;
                 }
             }
@@ -96,7 +141,8 @@ namespace Cinema_CP_WPF.ViewsModels
         {
             if (SelectedHall != null)
             {
-                List<FilmSessions> SortedsesionlistTmp = SelectedHall.FilmSessions.Where(d => d.SessionDate.Date == SelectedDate.Date).ToList();
+                int tommorow = SelectedDate.Day+1;
+                List<FilmSessions> SortedsesionlistTmp = SelectedHall.FilmSessions.Where(d => d.SessionDate.Date >= SelectedDate.Date).Where(dy=>dy.SessionDate.Day<tommorow).ToList();
                 if (SortedsesionlistTmp.Count > 0)
                 {
                     Sortedsesionlist.Clear();
@@ -444,7 +490,7 @@ namespace Cinema_CP_WPF.ViewsModels
             }
             set
             {
-                if (value > _dpDate)
+                if (value.Day >= DateTime.Now.Day&&value.Month >= DateTime.Now.Month&&value.Year >= DateTime.Now.Year)
                 {
                     _dpDate = value;
                 }
@@ -482,7 +528,15 @@ namespace Cinema_CP_WPF.ViewsModels
                 RaisePropertyChanged();
             }
         }
-        public ObservableCollection<Halls> Hallslist { get; set; }
+        public ObservableCollection<Halls> Hallslist {
+            get { return _hallsList; }
+            set
+            {
+                _hallsList = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public ObservableCollection<Ticket> Tiketlist { get => _tiketlist; set => _tiketlist = value; }
         public ObservableCollection<FilmSessions> Sesionlist { get => _sesionlist; set => _sesionlist = value; }
         public ObservableCollection<Place> PlaceList { get => _placeList; set => _placeList = value; }

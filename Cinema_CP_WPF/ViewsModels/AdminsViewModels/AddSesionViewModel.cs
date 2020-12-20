@@ -296,6 +296,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                             }
                             else
                             {
+                                SortedSesionList.Clear();
                                 foreach (var Sesions in SessionList)
                                 {
                                     SortedSesionList.Add(Sesions);

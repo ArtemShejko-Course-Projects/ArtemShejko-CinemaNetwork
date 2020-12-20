@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews"
+        xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="EditUsersView" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Users" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -59,7 +59,7 @@
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedUser.CinemaUserName}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Phone" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedUser.CinemaUserPhone}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
+                <xctk:MaskedTextBox Mask="+00(000) 000-0000" Background="Honeydew" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedUser.CinemaUserPhone}" Margin="1,1,1,1" VerticalAlignment="Center"></xctk:MaskedTextBox>
                 <TextBlock Grid.Column="0" Grid.Row="4" Text="Email" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                 <TextBox Background="Honeydew" Grid.Column="1" Grid.Row="4" Text="{Binding SelectedUser.CinemaUserEmail}" Margin="1,1,1,1" VerticalAlignment="Center"></TextBox>
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Role" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>

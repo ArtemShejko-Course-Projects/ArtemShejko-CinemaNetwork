@@ -19,6 +19,7 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
     {
         ObservableCollection<Halls> _hallsList;
         ObservableCollection<FilmSessions> _filmsesionList;
+        ObservableCollection<СinemaDetails> _cinemaList;
 
         CinemaContext _context;
         Halls _selectedHall;
@@ -32,8 +33,10 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
             _context = new CinemaContext();
             _context.Halls.Load();
             _context.FilmSessions.Load();
+            _context.СinemaDetails.Load();
             Hallslist = _context.Halls.Local;
             FilmsesionList = _context.FilmSessions.Local;
+            CinemaList = _context.СinemaDetails.Local;
             SelectedHall = _hallsList.FirstOrDefault();
             FillPlaces();
         }
@@ -59,6 +62,17 @@ namespace Cinema_CP_WPF.ViewsModels.AdminsViewModels
                 RaisePropertyChanged();
             }
         }
+        public ObservableCollection<СinemaDetails> CinemaList
+        {
+            get { return _cinemaList; }
+            set
+            {
+                _cinemaList = value;
+                FillPlaces();
+                RaisePropertyChanged();
+            }
+        }
+
 
         public ObservableCollection<FilmSessions> FilmsesionList
         {

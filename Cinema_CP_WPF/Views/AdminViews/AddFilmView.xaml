@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Cinema_CP_WPF.ViewsModels.AdminsViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=vm:AddFilmViewModel}"
-        Title="AddFilmView" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Add Film" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

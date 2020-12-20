@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema_CP_WPF.Views.AdminViews"
         mc:Ignorable="d"
-        Title="AddHallView" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Add Hall" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1.75*"/>
+                <RowDefinition Height="1.3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <GroupBox Grid.Row="0" Background="Azure">
@@ -50,6 +50,8 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*"/>
@@ -66,9 +68,18 @@
                         <Label Grid.Row="1" Grid.Column="3" Content="Place" Padding="1,1,1,1" Margin="3.333,3,2.667,3"/>
                         <TextBox Text="{Binding SelectedHall.HallRow}" Grid.Row="1" Grid.Column="2" Margin="3.333,3,2.667,3"/>
                         <TextBox Text="{Binding SelectedHall.HallColumn}" Grid.Row="1" Grid.Column="4" Margin="3.333,3,2.667,3"/>
-                        <Button Background="LightSteelBlue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="Add Hall" Command ="{Binding AddHall}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
-                        <Button Background="LightSteelBlue" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Delete Hall" Command ="{Binding DeleteHall}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
-                        <Button Background="LightSteelBlue" Grid.Row="3" Grid.ColumnSpan="5" Content="Save Changes" Command ="{Binding SaveChanges}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                        <GroupBox Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="5" Header="Cinema">
+                            <ComboBox ItemsSource="{Binding CinemaList}" SelectedItem="{Binding SelectedHall.СinemaDetails}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding СinemaDetailsTitle}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </GroupBox>
+                        <Button Background="LightSteelBlue" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Content="Add Hall" Command ="{Binding AddHall}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                        <Button Background="LightSteelBlue" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Content="Delete Hall" Command ="{Binding DeleteHall}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
+                        <Button Background="LightSteelBlue" Grid.Row="5" Grid.ColumnSpan="5" Content="Save Changes" Command ="{Binding SaveChanges}" Padding="1,1,1,1" Margin="3,3,2.667,3.333"/>
                     </Grid>
                 </GroupBox>
             </Grid>
